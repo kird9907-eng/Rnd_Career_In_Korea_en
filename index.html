@@ -192,14 +192,21 @@ table{ border-collapse:collapse; width:100%; }
 .print-btn:hover{ background:rgba(255,255,255,.12); color:#fff; }
 .print-btn:active{ transform:scale(.95); }
 
-.lang-switch{
-  flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  background:transparent; border:1px solid rgba(255,255,255,.55); color:#fff;
-  border-radius:var(--radius-pill); padding:.9rem 1.6rem; font-size:1.3rem; font-weight:700;
-  text-decoration:none; transition:transform .2s ease, background .15s ease;
+.lang-switcher{
+  flex-shrink:0; display:flex; align-items:center; gap:.2rem;
+  background:rgba(255,255,255,.12); border-radius:var(--radius-pill); padding:.3rem;
 }
-.lang-switch:hover{ background:rgba(255,255,255,.12); color:#fff; }
-.lang-switch:active{ transform:scale(.95); }
+.lang-option{
+  display:inline-flex; align-items:center; justify-content:center;
+  color:var(--text-white-soft); text-decoration:none; font-size:1.3rem; font-weight:700;
+  border-radius:var(--radius-pill); padding:.7rem 1.4rem; transition:background .15s ease, color .15s ease;
+}
+.lang-option:hover{ color:#fff; }
+.lang-option.is-active{ background:#fff; color:var(--green-brand); }
+.lang-option.is-active:hover{ color:var(--green-brand); }
+
+.footer-print{ display:flex; justify-content:center; margin-top:var(--sp-6); padding-top:var(--sp-5); border-top:1px solid rgba(255,255,255,.18); }
+.footer-print .print-btn{ font-weight:600; }
 
 /* ============================================================
    3. TAB BAR (카테고리 탭 / 사이드 메뉴 역할)
@@ -546,9 +553,7 @@ body.search-active .tab-bar{ display:none; }
   :root{ --header-h:6rem; --tabbar-h:5rem; }
   .site-header{ padding:0 var(--sp-3); gap:var(--sp-2); }
   .brand-text span{ display:none; }
-  .print-btn span{ display:none; }
-  .print-btn{ width:4.2rem; height:4.2rem; padding:0; justify-content:center; }
-  .lang-switch{ width:4.2rem; height:4.2rem; padding:0; }
+  .lang-option{ padding:.7rem 1rem; font-size:1.2rem; }
   .search-status{ font-size:1.3rem; }
   main{ padding-left:var(--sp-3); padding-right:var(--sp-3); }
   .program-head{ flex-direction:column; }
@@ -616,11 +621,10 @@ body.search-active .tab-bar{ display:none; }
     <div class="search-status" id="search-status" role="status" aria-live="polite"></div>
   </div>
 
-  <a href="index.html" class="lang-switch">한국어</a>
-  <button class="print-btn" id="print-btn" aria-label="Print or save as PDF">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9V4h12v5M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v7H6v-7z" stroke="currentColor" stroke-width="1.6"/></svg>
-    <span>Print / PDF</span>
-  </button>
+  <div class="lang-switcher" role="group" aria-label="Language selection">
+    <a href="https://kird9907-eng.github.io/RnD_Career_In_Korea/" class="lang-option">KOR</a>
+    <a href="https://kird9907-eng.github.io/Rnd_Career_In_Korea_en/" class="lang-option is-active" aria-current="page">EN</a>
+  </div>
 </header>
 
 <!-- ============================================================
@@ -852,6 +856,12 @@ body.search-active .tab-bar{ display:none; }
         <a href="https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/list.do" target="_blank" rel="noopener">K-Club</a>
       </p>
     </div>
+  </div>
+  <div class="footer-print">
+    <button class="print-btn" id="print-btn" aria-label="Print or save as PDF">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9V4h12v5M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v7H6v-7z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>Print / PDF</span>
+    </button>
   </div>
 </footer>
 

@@ -116,7 +116,7 @@ html{ font-size:75%; scroll-behavior:smooth; } /* 1rem = 12px (전체 글씨 크
 body{
   margin:0; font-family:var(--font-body); font-size:1.6rem; line-height:1.6;
   color:var(--text-black); background:var(--canvas-warm); letter-spacing:-.01em;
-  word-break:normal; overflow-wrap:break-word; hyphens:none;
+  word-break:normal; overflow-wrap:break-word; hyphens:none; overflow-x:hidden;
 }
 h1,h2,h3,h4{ font-family:var(--font-body); margin:0 0 var(--sp-3); color:var(--green-brand); line-height:1.35; text-wrap:balance; }
 h1{ font-size:3.4rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); }
@@ -161,7 +161,7 @@ table{ border-collapse:collapse; width:100%; }
   width:4rem; height:4rem; border-radius:var(--radius-input); font-size:1.8rem;
 }
 
-.search-wrap{ position:relative; flex:1; max-width:60rem; }
+.search-wrap{ position:relative; flex:1; min-width:0; max-width:60rem; }
 .search-box{
   display:flex; align-items:center; gap:.8rem; background:#fff; border-radius:var(--radius-pill);
   padding:.6rem 1rem .6rem 1.6rem; box-shadow:var(--shadow-card);
@@ -256,7 +256,7 @@ main{
   display:flex; flex-direction:column; align-items:center;
 }
 .hero-title{
-  font-size:clamp(3rem, 7.2vw, 9.6rem); font-weight:800; letter-spacing:-.03em; line-height:1;
+  font-size:clamp(2.2rem, 9vw, 9.6rem); font-weight:800; letter-spacing:-.03em; line-height:1;
   color:#006241; margin-bottom:var(--sp-4); white-space:nowrap; width:100%;
 }
 .hero-title .kw{
@@ -291,6 +291,7 @@ main{
 }
 @media (max-width: 520px){
   .hero-cta{ flex-direction:column; gap:var(--sp-3); }
+  .hero-title{ white-space:normal; font-size:clamp(2.6rem, 11vw, 4rem); }
 }
 
 body.search-active .panel[hidden]{ display:block !important; }
@@ -551,8 +552,8 @@ body.search-active .tab-bar{ display:none; }
    ============================================================ */
 @media (max-width: 860px){
   :root{ --header-h:6rem; --tabbar-h:5rem; }
-  .site-header{ padding:0 var(--sp-3); gap:var(--sp-2); }
-  .brand-text span{ display:none; }
+  .site-header{ padding:0 var(--sp-2); gap:.6rem; }
+  .brand-text{ display:none; }
   .lang-option{ padding:.7rem 1rem; font-size:1.2rem; }
   .search-status{ font-size:1.3rem; }
   main{ padding-left:var(--sp-3); padding-right:var(--sp-3); }
@@ -562,6 +563,12 @@ body.search-active .tab-bar{ display:none; }
   .brand-badge{ width:3.2rem; height:3.2rem; font-size:1.1rem; }
   .tab-btn{ padding:0 1.2rem; font-size:1.4rem; }
   h1{ font-size:2.2rem; }
+  .lang-switcher{ padding:.2rem; }
+  .lang-option{ padding:.6rem .8rem; font-size:1.1rem; }
+}
+@media (max-width: 400px){
+  .search-box{ padding:.6rem .8rem; }
+  #search-input::placeholder{ font-size:1.3rem; }
 }
 
 /* ============================================================

@@ -737,7 +737,7 @@ body.search-active .tab-bar{ display:none; }
           <p><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
         </div>
         <div class="contact-item">
-          <h3>Operating Institution</h3>
+          <h3>Implementing Institution</h3>
           <p>Korea Institute of Human Resources Development in Science and Technology (KIRD)</p>
         </div>
       </div>
@@ -859,6 +859,7 @@ body.search-active .tab-bar{ display:none; }
       <h3>SNS</h3>
       <p>
         <a href="https://www.facebook.com/people/RD-Career-in-Korea-KIRD/61578111343121/?sk=directory_intro" target="_blank" rel="noopener">Facebook</a> ·
+        <a href="https://www.linkedin.com/in/rnd-career-in-korea-kird-59806137a" target="_blank" rel="noopener">LinkedIn</a> ·
         <a href="https://open.kakao.com/o/g8T8EGth" target="_blank" rel="noopener">KakaoTalk</a> ·
         <a href="https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/list.do" target="_blank" rel="noopener">K-Club</a>
       </p>
@@ -896,7 +897,10 @@ const DATA = {
         ["Eligibility","International graduate students at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
         ["How to apply","Announced on the program's SNS and KakaoTalk open chat when applications open"]
       ],
-      links:[{label:"See program reviews", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007009Ts1pY8"}]
+      links:[
+        {label:"View Card News", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007009Ts1pY8"},
+        {label:"Watch Video", url:"https://youtu.be/gN7A-xm7uN8?si=EiiXLF-YwKdEufWo"}
+      ]
     },
     {
       tag:"Consulting", title:"Career Consulting", subtitle:"Tailored support from career planning to interview prep",
@@ -921,12 +925,13 @@ const DATA = {
         {title:"Want to build practical skills", desc:"On-site practice and mentoring help you build the practical skills and work experience a researcher needs."},
         {title:"Preparing for a job in Korea", desc:"Helpful for identifying your strengths through hands-on experience and preparing for future employment and career development."}
       ],
-      process:"Recruitment → Employability training → Selection of top trainees → Interview with companies → Internship activity (2 months) → Completion",
+      process:"Recruitment → Employability training → Selection of top trainees → Interview with companies → Internship activity (3 months) → Completion",
       footnote:"* The composition and schedule of the next cohort may change.",
       rows:[
         ["Schedule","2026 recruitment closed (next round expected in 2027)"],
-        ["Eligibility","Domestic science & engineering graduate-school graduates holding a K-STAR visa"]
-      ], links:[{label:"See program reviews", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007128Vq7cT8"}]
+        ["Eligibility","Domestic science & engineering graduate-school graduates holding a K-STAR visa"],
+        ["Support Scale","10 selected in total; mentor support stipend of KRW 300,000; labor cost support of KRW 2,600,000 (※ based on 2026 figures)"]
+      ], links:[{label:"View Card News", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007128Vq7cT8"}]
     },
     {
       tag:"E-learning", title:"Multicultural Research Culture", subtitle:"Making Korean research culture easier to understand",
@@ -953,8 +958,14 @@ const DATA = {
       footnote:"* The composition and schedule of the next round may change.",
       rows:[
         ["Schedule","2026 recruitment closed (next round expected in 2027)"],
-        ["Eligibility","Domestic and international science & engineering graduate/undergraduate students at Korean universities, and job-seekers within 2 years of graduation"]
-      ], links:[]
+        ["Eligibility","Domestic and international science & engineering graduate/undergraduate students at Korean universities, and job-seekers within 2 years of graduation"],
+        ["Support Details","8 research teams selected (4 team members + 1 advising professor each); KRW 10,500,000 per team (※ based on 2026 figures)"]
+      ], links:[
+        {label:"Watch Video", url:"https://youtu.be/2tE9Y_oTPkc?si=M-vqktv5o1dPXguS"},
+        {label:"View Selection Results", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000006855Lj9wT0"},
+        {label:"View Card News 1", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007066Wl7oJ8"},
+        {label:"View Card News 2", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007151Wk6vZ5"}
+      ]
     },
     {
       tag:"Content", title:"Career Development Guidebook", subtitle:"A guide to study, employment, and settlement in Korea",
@@ -1040,7 +1051,11 @@ const DATA = {
       rows:[
         ["Schedule","Sep 30 (Wed), 2026, 18:00 / Oct 28 (Wed), 18:00 / Nov 25 (Wed), 18:00"],
         ["How to apply","Announced on the program's SNS and KakaoTalk open chat when applications open"]
-      ], links:[{label:"Watch seminar videos", url:"https://youtu.be/T2ms3xCPH6c?si=dMF8ZCkeWYvpB3BZ"}]
+      ], links:[
+        {label:"Watch video 1", url:"https://youtu.be/T2ms3xCPH6c?si=40bgyeIh1vpSXwCC"},
+        {label:"Watch video 2", url:"https://youtu.be/51iDGy7kceE?si=aeWHETRQJitqsbJE"},
+        {label:"Watch video 3", url:"https://youtu.be/yiQ5kuSY6a0?si=LHl6TQRDS-CQpTUN"}
+      ]
     }
   ],
   life: [
@@ -1112,8 +1127,6 @@ const FAQ_ITEMS = [
    html:`These programs are aimed mainly at <strong>international graduate students and researchers in science & engineering fields who live in Korea</strong>, and depending on the program, <strong>international nationals affiliated with the 4 science & technology institutes and K-STAR visa-track selected universities</strong> may participate. Eligibility details vary by program, so please check each program's requirements.
     <details class="faq-sub"><summary>The 4 science & technology institutes</summary><p>KAIST, GIST, DGIST, UNIST</p></details>
     <details class="faq-sub"><summary>K-STAR visa-track selected universities (32 in total)</summary><p>KAIST, DGIST, UNIST, GIST, UST (University of Science & Technology), Kangwon National University, Kyungpook National University, Gyeongsang National University, Kyung Hee University, Korea University, Korea University Sejong Campus, Dong-A University, Pukyong National University, Pusan National University, Sogang University, Seoul National University, Sungkyunkwan University, Soonchunhyang University, Ajou University, Yonsei University, Yonsei University Mirae Campus, Inha University, Chonnam National University, Jeonbuk National University, Jeju National University, Chung-Ang University, Chungnam National University, Chungbuk National University, POSTECH, Korea Maritime & Ocean University, Hanyang University, Hanyang University ERICA Campus</p></details>`},
-  {q:"Who can take part in the programs?",
-   html:`These programs are aimed mainly at international graduate students and researchers in science & engineering fields who live in Korea. They range from career exploration and job-search prep to R&D capability building, networking, and life-settlement support, and <strong>eligibility details vary by program, so please check each program's requirements.</strong>`},
   {q:"Where do I apply for a program?",
    html:`<strong>Until KOLAB launches, please apply using the method announced in each program's recruitment notice.</strong> Information on new programs and recruitment is posted on the <strong>R&D Career in Korea SNS channels and the K-Club Global Lounge</strong>.<br><br><strong>After KOLAB launches in early October, you'll be able to check and apply for every program conveniently in one place on KOLAB.</strong>`},
   {q:"Can I join multiple programs at the same time?",

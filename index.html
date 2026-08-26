@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R&D Career in Korea | A Guide to the Full-Cycle Settlement Support Program for Foreign S&T Researchers</title>
+<meta name="description" content="A learning-style web manual for foreign science & technology researchers — from graduate students to working researchers — to search and check settlement support programs.">
+
+<!-- ============================================================
+     이 파일은 index.html 단일 파일로 완성되어 있습니다.
+     추후 분리 시 아래 3개 구획을 그대로 옮기면 됩니다.
+       1) <style> 내부 전체        -> style.css
+       2) <script> 내부 전체        -> script.js (DATA 부분은 data.js로 별도 분리 가능)
+       3) <body> 내부 마크업         -> 그대로 유지, style.css / script.js 링크만 추가
+     ============================================================ -->
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=EB+Garamond:wght@400;500;600&family=Rubik:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS  (색상 · 여백 · 그림자 · 라운드 값을 CSS 변수로 관리)
+   ============================================================ */
+:root{
+  /* Color — Starbucks 디자인 시스템 기반 팔레트 */
+  --canvas-warm:   #f2f0eb;   /* 페이지 기본 배경 (크림톤) */
+  --canvas-ceramic:#edebe9;   /* 구역 구분용 서브 배경 */
+  --white:         #ffffff;
+  --green-brand:   #006241;   /* 헤딩 / 브랜드 그린 */
+  --green-accent:  #00754A;   /* 주요 CTA / 링크 */
+  --green-house:   #1E3932;   /* 헤더/푸터/피처밴드 다크 그린 */
+  --green-uplift:  #2b5148;   /* 보조 다크 그린 */
+  --green-light:   #d4e9e2;   /* 배지, 톤 배경 */
+  --gold:          #cba258;   /* 성공적 정착(강조) 전용 포인트 — 남용 금지 */
+  --gold-lightest: #faf6ee;
+  --text-black:      rgba(0,0,0,.87);
+  --text-black-soft: rgba(0,0,0,.58);
+  --text-white:       #ffffff;
+  --text-white-soft: rgba(255,255,255,.72);
+  --red:  #c82014;
+  --border-soft: #e2ded6;
+  --border-input:#d6dbde;
+
+  /* 일정 배지용 시맨틱 색상 */
+  --sale: #a3341f;
+  --sale-tint: #fbe4e1;
+  --success: #006241;
+  --success-tint: #d4e9e2;
+  --info: #8a6a1f;
+  --info-tint: #faf6ee;
+  --stone: #9e9ea0;
+  --ash: #4b4b4d;
+  --deep-green: #1E3932;
+  --coral: #cba258;
+  --action-blue: #00754A;
+  --focus-blue: #00754A;
+
+  /* 이후 리스킨 과정에서 등장한 변수명 호환 별칭 — Starbucks 팔레트로 매핑 */
+  --primary: var(--green-house);
+  --ink-deep: var(--green-brand);
+  --lime: var(--green-light);
+  --pink: var(--gold);
+  --violet: var(--green-accent);
+  --violet-deep: var(--green-house);
+  --violet-mid: var(--text-black-soft);
+  --surface-night: var(--green-house);
+  --on-dark-muted: var(--text-white-soft);
+  --on-dark-faint: rgba(255,255,255,.15);
+  --hairline-violet: var(--border-soft);
+  --on-primary: #ffffff;
+  --carbon: var(--green-brand);
+  --chrome-indigo: var(--green-accent);
+  --nav-gold: var(--gold);
+  --amber: var(--green-light);
+  --sky: var(--canvas-ceramic);
+  --muted-indigo: var(--border-soft);
+  --signal: var(--green-accent);
+  --lavender: var(--green-light);
+
+  /* 프로그램 카테고리 색상 구분 팔레트 — Starbucks 톤 */
+  --orb-mint:     #00754A;
+  --orb-peach:    #b1560f;
+  --orb-lavender: #6b4694;
+  --orb-sky:      #1c5d8c;
+  --orb-rose:     #a83e5c;
+
+  /* Radius */
+  --radius-card: 12px;
+  --radius-pill: 50px;
+  --radius-chip: 50px;
+  --radius-tag: 50px;
+  --radius-input: 4px;
+
+  /* Shadow — 옅은 그림자 2겹을 겹쳐 쓰는 방식 */
+  --shadow-card: 0 0 .5px rgba(0,0,0,.14), 0 1px 1px rgba(0,0,0,.24);
+  --shadow-nav:  0 1px 3px rgba(0,0,0,.10), 0 2px 2px rgba(0,0,0,.06);
+  --shadow-fab:  0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,.14);
+
+  /* Spacing (rem, 1rem=10px 기준) */
+  --sp-1: .4rem;  --sp-2: .8rem;  --sp-3: 1.6rem; --sp-4: 2.4rem;
+  --sp-5: 3.2rem; --sp-6: 4rem;  --sp-7: 4.8rem; --sp-8: 5.6rem;
+
+  --header-h: 6.4rem;
+  --tabbar-h: 5.4rem;
+  --font-body: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --font-display: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --font-mono: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ font-size:75%; scroll-behavior:smooth; } /* 1rem = 12px (전체 글씨 크기 확대) */
+body{
+  margin:0; font-family:var(--font-body); font-size:1.6rem; line-height:1.6;
+  color:var(--text-black); background:var(--canvas-warm); letter-spacing:-.01em;
+  word-break:normal; overflow-wrap:break-word; hyphens:none;
+}
+h1,h2,h3,h4{ font-family:var(--font-body); margin:0 0 var(--sp-3); color:var(--green-brand); line-height:1.35; text-wrap:balance; }
+h1{ font-size:3.4rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); }
+h2{ font-size:2.2rem; font-weight:700; }
+h3{ font-size:1.8rem; font-weight:700; }
+p{ margin:0 0 var(--sp-3); color:var(--text-black); }
+a{ color:var(--green-accent); text-decoration:none; font-weight:600; }
+a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+  outline:3px solid var(--green-accent); outline-offset:2px; border-radius:4px;
+}
+mark{ background:var(--gold-lightest); color:var(--text-black); padding:0 2px; border-bottom:2px solid var(--gold); }
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+ul{ margin:0; padding-left:1.8rem; }
+table{ border-collapse:collapse; width:100%; }
+
+.skip-link{
+  position:absolute; left:-999px; top:0; background:var(--green-house); color:#fff;
+  padding:1rem 1.6rem; z-index:200; border-radius:0 0 8px 0;
+}
+.skip-link:focus{ left:0; }
+
+/* ============================================================
+   2. HEADER (상단 고정) + 검색
+   ============================================================ */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:100; height:var(--header-h);
+  background:var(--green-house); box-shadow:var(--shadow-nav);
+  display:flex; align-items:center; gap:var(--sp-4);
+  padding:0 var(--sp-4);
+}
+.brand{ display:flex; align-items:center; gap:1rem; color:#fff; text-decoration:none; flex-shrink:0; }
+.brand-badge{
+  width:3.6rem; height:3.6rem; border-radius:50%; background:var(--green-accent);
+  color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.3rem;
+}
+.brand-text strong{ display:block; font-size:1.6rem; font-weight:700; letter-spacing:-.01em; color:#fff; }
+.brand-text span{ display:block; font-size:1.15rem; color:var(--text-white-soft); }
+
+.menu-toggle{
+  display:none; background:transparent; border:1px solid rgba(255,255,255,.4); color:#fff;
+  width:4rem; height:4rem; border-radius:var(--radius-input); font-size:1.8rem;
+}
+
+.search-wrap{ position:relative; flex:1; max-width:60rem; }
+.search-box{
+  display:flex; align-items:center; gap:.8rem; background:#fff; border-radius:var(--radius-pill);
+  padding:.6rem 1rem .6rem 1.6rem; box-shadow:var(--shadow-card);
+}
+.search-box svg{ flex-shrink:0; color:var(--text-black-soft); }
+#search-input{
+  border:0; outline:0; flex:1; font-size:1.5rem; font-family:inherit; color:var(--text-black);
+  background:transparent; min-width:0;
+}
+#search-clear{
+  border:0; background:var(--canvas-ceramic); color:var(--text-black-soft); border-radius:50%;
+  width:2.6rem; height:2.6rem; font-size:1.4rem; display:none;
+}
+.search-status{
+  position:absolute; top:calc(100% + .6rem); left:0; right:0; background:#fff; border-radius:var(--radius-card);
+  box-shadow:var(--shadow-card); padding:.8rem 1.6rem; font-size:1.35rem; color:var(--text-black-soft);
+  display:none; z-index:5;
+}
+.search-status.show{ display:block; }
+.search-status strong{ color:var(--green-accent); }
+
+.print-btn{
+  flex-shrink:0; display:flex; align-items:center; gap:.6rem;
+  background:transparent; border:1px solid rgba(255,255,255,.55); color:#fff;
+  border-radius:var(--radius-pill); padding:.9rem 1.8rem; font-size:1.4rem; font-weight:600;
+  transition:transform .2s ease;
+}
+.print-btn:hover{ background:rgba(255,255,255,.12); color:#fff; }
+.print-btn:active{ transform:scale(.95); }
+
+.lang-switch{
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  background:transparent; border:1px solid rgba(255,255,255,.55); color:#fff;
+  border-radius:var(--radius-pill); padding:.9rem 1.6rem; font-size:1.3rem; font-weight:700;
+  text-decoration:none; transition:transform .2s ease, background .15s ease;
+}
+.lang-switch:hover{ background:rgba(255,255,255,.12); color:#fff; }
+.lang-switch:active{ transform:scale(.95); }
+
+/* ============================================================
+   3. TAB BAR (카테고리 탭 / 사이드 메뉴 역할)
+   ============================================================ */
+.tab-bar{
+  position:fixed; top:var(--header-h); left:0; right:0; z-index:90; height:var(--tabbar-h);
+  background:#fff; box-shadow:var(--shadow-nav); overflow-x:auto; -webkit-overflow-scrolling:touch;
+}
+.tab-list{
+  list-style:none; margin:0; padding:0 var(--sp-4); height:100%;
+  display:flex; align-items:stretch; gap:.4rem; min-width:max-content;
+}
+.tab-list li{ display:flex; }
+.tab-btn{
+  border:0; background:transparent; padding:0 1.8rem; font-size:1.5rem; font-weight:600;
+  color:var(--text-black-soft); border-bottom:3px solid transparent; white-space:nowrap;
+  display:flex; align-items:center; gap:.6rem; transition:color .15s ease, border-color .15s ease;
+}
+.tab-btn .count{
+  font-size:1.1rem; background:var(--canvas-ceramic); color:var(--text-black-soft);
+  border-radius:var(--radius-pill); padding:.1rem .7rem;
+}
+.tab-btn[aria-selected="true"]{ color:var(--green-brand); border-bottom-color:var(--green-accent); }
+.tab-btn:hover{ color:var(--green-accent); }
+body.search-active .tab-btn{ opacity:.45; pointer-events:none; }
+
+/* ============================================================
+   4. LAYOUT
+   ============================================================ */
+main{
+  max-width:104rem; margin:0 auto; padding:var(--sp-6) var(--sp-4) var(--sp-8);
+  padding-top:calc(var(--header-h) + var(--tabbar-h) + var(--sp-5));
+}
+.panel{ }
+.panel[hidden]{ display:none; }
+.panel-head{ margin-bottom:var(--sp-5); }
+.eyebrow{
+  display:inline-block; font-size:1.3rem; font-weight:700; color:var(--green-accent);
+  background:var(--green-light); padding:.4rem 1.2rem; border-radius:var(--radius-pill); margin-bottom:1rem;
+  letter-spacing:.02em; text-wrap:balance;
+}
+.lead{ font-size:1.7rem; color:var(--text-black-soft); max-width:70ch; text-wrap:pretty; }
+
+/* ---- Hero (사업 소개 상단, "monumental type" 스타일) ---- */
+.hero-head{
+  text-align:center; max-width:none; width:100%; margin:0 auto var(--sp-7);
+  display:flex; flex-direction:column; align-items:center;
+}
+.hero-title{
+  font-size:clamp(3rem, 7.2vw, 9.6rem); font-weight:800; letter-spacing:-.03em; line-height:1;
+  color:#006241; margin-bottom:var(--sp-4); white-space:nowrap; width:100%;
+}
+.hero-title .kw{
+  background:transparent; color:#004d33; padding:0; border-radius:0; white-space:nowrap;
+}
+.hero-tagline{
+  font-size:2.1rem; font-weight:700; color:#006241; margin-bottom:1.2rem; text-wrap:balance;
+}
+.hero-journey-img{
+  width:100%; max-width:46rem; border-radius:var(--radius-card); box-shadow:var(--shadow-card);
+  margin:0 auto var(--sp-4);
+}
+.hero-lead{
+  font-size:1.6rem; color:var(--text-black-soft); max-width:62ch; margin-bottom:var(--sp-5); line-height:1.6; text-wrap:pretty;
+}
+.hero-cta{ display:flex; align-items:center; gap:var(--sp-4); flex-wrap:wrap; justify-content:center; }
+.hero-btn-filled{
+  display:inline-flex; align-items:center; background:var(--green-house); color:#fff; text-decoration:none;
+  font-weight:700; font-size:1.5rem; border-radius:var(--radius-pill); padding:1.3rem 2.8rem;
+  transition:transform .2s ease, background .2s ease;
+}
+.hero-btn-filled:hover{ background:var(--green-brand); }
+.hero-btn-filled:active{ transform:scale(.95); }
+.hero-btn-text{
+  font-weight:700; font-size:1.5rem; color:var(--text-black); text-decoration:none;
+  border-bottom:1.5px solid var(--text-black); padding-bottom:.2rem;
+  display:inline-flex; align-items:center; background:transparent; border-radius:0; padding-left:0; padding-right:0;
+}
+.hero-btn-text:hover{ color:var(--green-accent); border-color:var(--green-accent); background:transparent; }
+@media (max-width: 700px){
+  .hero-tagline{ font-size:1.7rem; }
+}
+@media (max-width: 520px){
+  .hero-cta{ flex-direction:column; gap:var(--sp-3); }
+}
+
+body.search-active .panel[hidden]{ display:block !important; }
+body.search-active main{ padding-top:calc(var(--header-h) + var(--sp-5)); }
+body.search-active .tab-bar{ display:none; }
+
+/* ============================================================
+   5. CARDS / 표
+   ============================================================ */
+.card{
+  background:#fff; border-radius:var(--radius-card); box-shadow:var(--shadow-card);
+  padding:var(--sp-4); margin-bottom:var(--sp-4);
+}
+.notice-card{ border:1px solid #cfe3d9; background:#eef6f1; }
+.notice-card p{ color:var(--text-black); }
+.notice-card strong{ color:var(--green-brand); }
+.notice-eyebrow{ background:#cfe3d9; color:var(--green-brand); }
+.notice-headline{ font-size:2rem; font-weight:800; letter-spacing:-.01em; color:var(--green-brand); margin-bottom:1rem; text-wrap:balance; }
+.notice-closing{ margin-top:1.2rem; margin-bottom:0; }
+.card.dark{ background:var(--green-house); color:#fff; }
+.card.dark p, .card.dark li{ color:var(--text-white-soft); }
+.card.dark h2, .card.dark h3{ color:#fff; }
+
+.overview-table{ overflow-x:auto; }
+.overview-table table{ border-collapse:separate; border-spacing:0 .8rem; }
+.overview-table table th, .overview-table table td{
+  border:0; padding:1.2rem 1.4rem; font-size:1.4rem; text-align:left; vertical-align:top;
+}
+.overview-table table thead th{ padding-top:0; padding-bottom:.6rem; font-size:1.2rem; color:var(--text-black-soft); text-transform:uppercase; letter-spacing:.06em; }
+.overview-table table tbody th{ font-weight:700; color:var(--green-brand); width:15%; border-left:5px solid var(--border-soft); background:var(--white); }
+.overview-table table tbody td{ background:var(--white); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); border-right:1px solid var(--border-soft); }
+.overview-table table tbody th{ border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); }
+.overview-table table tbody tr.row-mint th{ border-left-color:var(--orb-mint); background:color-mix(in srgb, var(--orb-mint) 18%, white); }
+.overview-table table tbody tr.row-peach th{ border-left-color:var(--orb-peach); background:color-mix(in srgb, var(--orb-peach) 18%, white); }
+.overview-table table tbody tr.row-lavender th{ border-left-color:var(--orb-lavender); background:color-mix(in srgb, var(--orb-lavender) 18%, white); }
+.overview-table table td ul{ padding-left:1.6rem; margin:0; }
+.overview-table table td li{ margin-bottom:.4rem; }
+
+.contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(22rem,1fr)); gap:var(--sp-3); }
+.contact-item{ background:var(--canvas-ceramic); border-radius:var(--radius-card); padding:var(--sp-3); border-left:4px solid var(--border-soft); }
+.contact-item:nth-of-type(1){ border-left-color:var(--orb-mint); }
+.contact-item:nth-of-type(2){ border-left-color:var(--orb-peach); }
+.contact-item h3{ font-size:1.5rem; margin-bottom:.4rem; color:var(--green-brand); }
+.contact-item p{ margin:0; font-size:1.45rem; }
+
+.journey-figure{ margin:0 0 var(--sp-5); }
+.journey-figure img{ border-radius:var(--radius-card); box-shadow:var(--shadow-card); }
+.journey-figure figcaption{ margin-top:.8rem; font-size:1.3rem; color:var(--text-black-soft); text-align:center; }
+
+.note-pill{
+  display:inline-flex; align-items:center; gap:.5rem; font-size:1.25rem; font-weight:600;
+  color:#8a6a1f; background:var(--gold-lightest); border:1px solid var(--gold); border-radius:var(--radius-pill);
+  padding:.3rem 1.1rem; margin:.3rem .4rem .3rem 0;
+}
+
+/* ============================================================
+   6. PROGRAM LIST (프로그램 전체 스크롤 목록)
+   ============================================================ */
+.pager-shell{ display:flex; flex-direction:column; gap:var(--sp-4); }
+.list-count{ font-size:1.3rem; color:var(--text-black-soft); font-weight:700; margin:0 0 -.8rem; }
+
+.program-card{ display:none; }
+.program-card.active{ display:block; border-left:6px solid var(--tag-color, var(--signal)); padding-left:calc(var(--sp-4) - 6px); }
+.program-card.flash{ animation:flash-highlight 1.6s ease; }
+@keyframes flash-highlight{
+  0%{ box-shadow:0 0 0 3px var(--signal); }
+  100%{ box-shadow:0 0 0 0px transparent; }
+}
+
+.program-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:var(--sp-3); flex-wrap:wrap; }
+.tag-pill{
+  display:inline-block; font-size:1.15rem; font-weight:600; color:var(--carbon);
+  background:var(--tag-tint, var(--amber)); padding:.35rem 1.2rem; border-radius:var(--radius-pill); margin-bottom:.8rem;
+  letter-spacing:0;
+}
+.program-subtitle{ font-size:1.55rem; font-weight:700; color:var(--text-black); margin-bottom:.6rem; word-break:normal; overflow-wrap:break-word; text-wrap:balance; }
+
+.bookmark-toggle{
+  display:flex; align-items:center; gap:.7rem; font-size:1.2rem; font-weight:700; color:var(--text-black-soft);
+  background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius-pill);
+  padding:.8rem 1.6rem; flex-shrink:0; box-shadow:var(--shadow-card); cursor:pointer;
+
+}
+.bookmark-toggle input{ position:absolute; opacity:0; width:1px; height:1px; }
+.bookmark-check{
+  display:inline-flex; align-items:center; justify-content:center; width:1.9rem; height:1.9rem; border-radius:50%;
+  border:1.5px solid var(--border-input); color:transparent; font-size:1.2rem; flex-shrink:0; transition:all .15s ease;
+}
+.bookmark-toggle.is-on{ color:var(--carbon); border-color:var(--tag-color, var(--signal)); }
+.bookmark-toggle.is-on .bookmark-check{ background:var(--tag-color, var(--signal)); border-color:var(--tag-color, var(--signal)); color:#fff; }
+.bookmark-toggle:has(input:focus-visible){ outline:3px solid var(--focus-blue); outline-offset:2px; }
+
+/* 캐치프레이즈 3박스 — "이런 분께"를 대체하는 네모칸(화살표 없음) */
+.catch-grid{ display:flex; flex-wrap:wrap; gap:1rem; margin:1.4rem 0 1.8rem; }
+.catch-box{
+  flex:1 1 20rem; background:var(--tag-tint, var(--canvas-ceramic));
+  border-radius:var(--radius-chip); padding:1.6rem 1.8rem; border-left:4px solid var(--tag-color, var(--signal));
+}
+.catch-title{
+  font-weight:600; font-size:1.5rem; color:var(--carbon); margin:0 0 .6rem; text-wrap:balance;
+}
+.catch-desc{ font-size:1.35rem; color:var(--text-black-soft); line-height:1.55; margin:0; text-wrap:pretty; }
+.process-footnote{ font-size:1.25rem; color:var(--text-black-soft); margin:1rem 0 0; }
+
+/* 정보 행 — 아이콘 + 라벨 + 값 (표 대신 사용) */
+.info-rows{ margin-top:.4rem; }
+.info-row{
+  display:flex; align-items:flex-start; gap:1.2rem; padding:1.2rem 0; border-top:1px solid var(--border-soft);
+}
+.info-rows .info-row:first-child{ border-top:0; }
+.info-icon{ flex-shrink:0; width:2rem; height:2rem; color:var(--chrome-indigo); display:flex; align-items:center; justify-content:center; margin-top:.1rem; }
+.info-label{ flex:0 0 9rem; font-size:1.25rem; font-weight:700; color:var(--text-black-soft); }
+.info-value{ flex:1; font-size:1.45rem; color:var(--text-black); line-height:1.55; text-wrap:pretty; }
+.row-badges{ display:inline-flex; flex-wrap:wrap; gap:.6rem; }
+.row-badge{
+  display:inline-block; font-size:1.2rem; font-weight:700; padding:.4rem 1.2rem; border-radius:var(--radius-pill);
+
+}
+.row-badge.closed{ background:#cc785c; color:#fff; }
+.row-badge.open{ background:#e8a55a; color:#fff; }
+.row-badge.pending{ background:var(--info-tint); color:var(--ink-deep); }
+.row-badge.unknown{ background:var(--canvas-ceramic); color:var(--text-black-soft); }
+@media (max-width:600px){
+  .info-row{ flex-wrap:wrap; }
+  .info-label{ flex-basis:100%; }
+}
+
+.link-row{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:var(--sp-3); }
+.pill-link{
+  display:inline-flex; align-items:center; gap:.5rem; background:var(--tag-color, var(--green-accent)); color:#fff;
+  border-radius:var(--radius-pill); padding:.9rem 2rem; font-size:1.3rem; font-weight:700; text-decoration:none;
+
+  transition:filter .15s ease, transform .2s ease;
+}
+.pill-link:hover{ filter:brightness(.88); }
+.pill-link:active{ transform:scale(.95); }
+.pill-link.outline{ background:transparent; color:var(--green-accent); border:1px solid var(--green-accent); box-shadow:none; }
+
+/* ============================================================
+   7. FAQ / 체크리스트
+   ============================================================ */
+.faq-header{ display:flex; align-items:center; justify-content:space-between; gap:1.2rem; flex-wrap:wrap; margin-bottom:var(--sp-3); }
+.faq-toggle-all{ display:flex; gap:.8rem; }
+.faq-toggle-btn{
+  background:#fff; border:1px solid var(--border-soft); color:var(--text-black);
+  border-radius:var(--radius-pill); padding:.6rem 1.4rem; font-size:1.25rem; font-weight:600;
+  transition:background .15s ease, border-color .15s ease;
+}
+.faq-toggle-btn:hover{ background:var(--canvas-ceramic); border-color:var(--border-input); }
+.faq-item{ border-bottom:1px solid var(--border-soft); }
+.faq-item:last-child{ border-bottom:0; }
+.faq-q{
+  width:100%; text-align:left; background:transparent; border:0; padding:1.6rem 0; font-size:1.5rem;
+  font-weight:700; color:var(--text-black); display:flex; justify-content:space-between; gap:1rem; align-items:center;
+}
+.faq-q .chevron{ transition:transform .3s cubic-bezier(.25,.46,.45,.94); flex-shrink:0; color:var(--chrome-indigo); }
+.faq-q[aria-expanded="true"] .chevron{ transform:rotate(180deg); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .3s cubic-bezier(.25,.46,.45,.94); }
+.faq-a-inner{ padding:0 0 1.8rem; font-size:1.45rem; color:var(--text-black-soft); line-height:1.6; text-wrap:pretty; }
+.faq-a-inner strong{ font-weight:400; color:var(--text-black); background-image:linear-gradient(180deg, transparent 58%, var(--green-light) 58%); }
+.faq-sub{
+  margin-top:1rem; background:var(--canvas-ceramic); border-radius:var(--radius-chip); padding:.8rem 1.2rem;
+}
+.faq-sub summary{
+  cursor:pointer; font-weight:600; color:var(--ink-deep); font-size:1.35rem; list-style:none;
+}
+.faq-sub summary::-webkit-details-marker{ display:none; }
+.faq-sub summary::before{ content:"▸ "; }
+.faq-sub[open] summary::before{ content:"▾ "; }
+.faq-sub p{ margin:.8rem 0 0; font-size:1.3rem; color:var(--text-black); line-height:1.6; }
+
+.bookmark-summary{ font-size:1.4rem; color:var(--text-black-soft); }
+.bookmark-summary a{ font-weight:700; }
+.reset-btn{
+  margin-top:1.2rem; background:transparent; border:1px solid var(--border-input); color:var(--text-black-soft);
+  border-radius:var(--radius-pill); padding:.8rem 1.8rem; font-size:1.2rem; font-weight:700; transition:all .15s ease;
+
+}
+.reset-btn:hover{ border-color:var(--red); color:var(--red); }
+.reset-btn.confirming{ border-color:var(--red); color:var(--red); background:rgba(230,0,18,.08); }
+
+/* 연간 일정 캘린더 뷰 */
+.calendar-grid{
+  display:grid; grid-template-columns:repeat(4, minmax(max-content,1fr)); gap:.8rem; margin-bottom:var(--sp-4);
+  overflow-x:auto;
+}
+.calendar-cell{
+  background:var(--canvas-ceramic); border-radius:var(--radius-chip); padding:1.2rem 1rem; min-height:9rem;
+  display:flex; flex-direction:column; gap:.5rem; border:1px solid var(--border-soft); border-top:4px solid var(--border-soft);
+}
+.calendar-cell:nth-of-type(4n+1){ border-top-color:var(--orb-mint); background:#e3f0e9; }
+.calendar-cell:nth-of-type(4n+2){ border-top-color:var(--orb-peach); background:#f5e6d8; }
+.calendar-cell:nth-of-type(4n+3){ border-top-color:var(--orb-lavender); background:#eae2f1; }
+.calendar-cell:nth-of-type(4n+4){ border-top-color:var(--orb-sky); background:#dfe9f0; }
+.calendar-cell.has-event{ }
+.calendar-month{ font-size:1.2rem; font-weight:700; color:var(--carbon); }
+.calendar-event{
+  display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius-chip); padding:.5rem .7rem;
+  font-size:1.15rem; line-height:1.35; color:var(--text-black); white-space:nowrap;
+}
+.calendar-event:hover{ background:var(--signal); color:var(--on-primary); border-color:var(--signal); }
+.calendar-event .ev-day{ font-weight:700; color:var(--chrome-indigo); margin-right:.3rem; }
+.calendar-event:hover .ev-day{ color:#fff; }
+.calendar-groups{ display:flex; flex-direction:column; gap:1rem; }
+.calendar-group-title{ font-size:1.2rem; font-weight:700; color:var(--text-black-soft); margin-bottom:.4rem; }
+.calendar-chip-row{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.calendar-chip{
+  background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius-pill); padding:.6rem 1.4rem;
+  font-size:1.2rem; font-weight:700; color:var(--text-black); white-space:nowrap;
+}
+.calendar-chip:hover{ background:var(--amber); border-color:var(--amber); color:var(--carbon); }
+@media (max-width: 860px){
+  .calendar-grid{ grid-template-columns:repeat(2, minmax(max-content,1fr)); }
+}
+@media (max-width: 520px){
+  .calendar-grid{ grid-template-columns:minmax(max-content,1fr); }
+}
+.sns-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(24rem,1fr)); gap:var(--sp-3); }
+.sns-card{
+  background:#fff; border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:var(--sp-3);
+  display:flex; flex-direction:column; gap:.8rem; border:1px solid var(--border-soft); border-top:4px solid var(--border-soft);
+}
+.sns-card:nth-of-type(4n+1){ border-top-color:var(--orb-mint); --tag-color:var(--orb-mint); }
+.sns-card:nth-of-type(4n+2){ border-top-color:var(--orb-peach); --tag-color:var(--orb-peach); }
+.sns-card:nth-of-type(4n+3){ border-top-color:var(--orb-lavender); --tag-color:var(--orb-lavender); }
+.sns-card:nth-of-type(4n+4){ border-top-color:var(--orb-sky); --tag-color:var(--orb-sky); }
+.sns-card h3{ margin:0; font-size:1.4rem; }
+.sns-card p{ flex:1; margin:0; }
+.sns-card a{ font-size:1.35rem; word-break:break-all; align-self:flex-start; margin-top:auto; }
+
+/* No result */
+.no-result{
+  text-align:center; padding:var(--sp-6) var(--sp-3); color:var(--text-black-soft); font-size:1.5rem;
+  display:none;
+}
+.no-result.show{ display:block; }
+
+/* ============================================================
+   8. FOOTER
+   ============================================================ */
+.site-footer{ background:var(--green-house); color:#fff; padding:var(--sp-6) var(--sp-4); margin-top:var(--sp-8); }
+.footer-inner{ max-width:104rem; margin:0 auto; display:flex; flex-wrap:wrap; gap:var(--sp-5); justify-content:space-between; }
+.site-footer h3{ color:#fff; font-size:1.6rem; }
+.site-footer p, .site-footer a{ color:var(--text-white-soft); font-size:1.35rem; }
+.site-footer a{ text-decoration:underline; }
+.site-footer a:hover{ color:#fff; }
+
+/* FAB — 맨 위로 (디자인 시스템의 원형 플로팅 CTA 모티프 적용) */
+.fab-top{
+  position:fixed; right:2.4rem; bottom:2.4rem; width:5.6rem; height:5.6rem; border-radius:50%;
+  background:var(--green-accent); color:#fff; border:0; box-shadow:var(--shadow-fab); font-size:1.3rem;
+  display:flex; align-items:center; justify-content:center; z-index:80; transition:transform .2s ease;
+}
+.fab-top:active{ transform:scale(.95); }
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px){
+  :root{ --header-h:6rem; --tabbar-h:5rem; }
+  .site-header{ padding:0 var(--sp-3); gap:var(--sp-2); }
+  .brand-text span{ display:none; }
+  .print-btn span{ display:none; }
+  .print-btn{ width:4.2rem; height:4.2rem; padding:0; justify-content:center; }
+  .lang-switch{ width:4.2rem; height:4.2rem; padding:0; }
+  .search-status{ font-size:1.3rem; }
+  main{ padding-left:var(--sp-3); padding-right:var(--sp-3); }
+  .program-head{ flex-direction:column; }
+}
+@media (max-width: 520px){
+  .brand-badge{ width:3.2rem; height:3.2rem; font-size:1.1rem; }
+  .tab-btn{ padding:0 1.2rem; font-size:1.4rem; }
+  h1{ font-size:2.2rem; }
+}
+
+/* ============================================================
+   10. PRINT
+   ============================================================ */
+@media print{
+  .site-header, .tab-bar, .fab-top, .bookmark-toggle, .reset-btn,
+  .print-btn, .search-wrap, #search-status{ display:none !important; }
+  body{ background:#fff; }
+  .hero-head{ background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; }
+  .hero-title{ color:#000 !important; text-shadow:none !important; }
+  .hero-tagline, .hero-lead{ color:#000 !important; }
+  main{ padding-top:0 !important; max-width:100%; }
+  .panel[hidden]{ display:block !important; }
+  .program-card{ display:block !important; page-break-inside:avoid; }
+  .card{ box-shadow:none; border:1px solid #ccc; }
+  .card.dark{ background:#fff !important; color:#000 !important; border:1px solid #ccc; }
+  .card.dark p, .card.dark li, .card.dark h2, .card.dark h3{ color:#000 !important; }
+  .notice-card{ background:#fff !important; }
+  .notice-card p, .notice-card strong, .notice-headline{ color:#000 !important; }
+  .hero-title .kw{ background:transparent !important; color:#000 !important; }
+  a{ color:#000; text-decoration:underline; }
+  .site-footer{ background:#fff !important; color:#000 !important; }
+  .site-footer a, .site-footer p{ color:#000 !important; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <a href="#panel-intro" class="brand" id="brand-home">
+    <span class="brand-badge" aria-hidden="true">R&D</span>
+    <span class="brand-text">
+      <strong>R&D Career in Korea</strong>
+      <span>Full-Cycle Settlement Support for Foreign S&T Researchers</span>
+    </span>
+  </a>
+
+  <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="tab-bar">☰</button>
+
+  <div class="search-wrap">
+    <div class="search-box" role="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <label for="search-input" class="visually-hidden" style="position:absolute;left:-9999px;">Search programs and information</label>
+      <input type="search" id="search-input" placeholder="Search by program name or keyword (e.g. internship, counseling, visa)" aria-describedby="search-status">
+      <button id="search-clear" aria-label="Clear search">✕</button>
+    </div>
+    <div class="search-status" id="search-status" role="status" aria-live="polite"></div>
+  </div>
+
+  <a href="index.html" class="lang-switch">한국어</a>
+  <button class="print-btn" id="print-btn" aria-label="Print or save as PDF">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9V4h12v5M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v7H6v-7z" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Print / PDF</span>
+  </button>
+</header>
+
+<!-- ============================================================
+     TAB BAR (category navigation — role="tablist")
+     ============================================================ -->
+<nav class="tab-bar" id="tab-bar" aria-label="Main menu">
+  <ul class="tab-list" role="tablist" id="tab-list">
+    <li><button class="tab-btn" role="tab" id="tab-btn-intro" aria-selected="true" aria-controls="panel-intro" data-panel="intro">1. Overview</button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-grad" aria-selected="false" aria-controls="panel-grad" data-panel="grad">2. Graduate Student Programs <span class="count">7</span></button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-staff" aria-selected="false" aria-controls="panel-staff" data-panel="staff">3. Working Researcher Programs <span class="count">4</span></button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-life" aria-selected="false" aria-controls="panel-life" data-panel="life">4. Life Support Services <span class="count">4</span></button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-sns" aria-selected="false" aria-controls="panel-sns" data-panel="sns">5. SNS &amp; FAQ</button></li>
+  </ul>
+</nav>
+
+<main id="main-content">
+
+  <!-- ============================================================
+       1. Overview
+       ============================================================ -->
+  <section class="panel" id="panel-intro" role="tabpanel" aria-labelledby="tab-btn-intro" tabindex="-1">
+    <div class="panel-head hero-head">
+      <h1 class="hero-title">R&amp;D Career in <span class="kw">Korea</span></h1>
+      <img class="hero-journey-img" src="images/career-journey.jpg" alt="R&D Career in Korea settlement journey map: an illustrated path from starting graduate school, adapting to academic and lab life, understanding Korea's R&D system, job-search preparation, career development, employment, through to successful settlement">
+      <p class="hero-tagline">When settling down becomes easier, your research shines brighter</p>
+      <p class="hero-lead">We support foreign science &amp; technology researchers through the entire journey in Korea — from starting graduate school to employment, settlement, and career development.</p>
+      <div class="hero-cta">
+        <a class="hero-btn-filled" href="#panel-grad" data-panel-link="grad">Explore Programs</a>
+        <a class="hero-btn-text" href="https://mail.google.com/mail/?view=cm&fs=1&to=globaltalent@kird.re.kr&su=%5BR%26D%20Career%20in%20Korea%5D%20Inquiry" target="_blank" rel="noopener">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="card notice-card searchable-unit">
+      <span class="eyebrow notice-eyebrow">Notice</span>
+      <p class="notice-headline">In early October, KOLAB — an integrated support platform for international research talent — will newly launch!</p>
+      <p>Going forward, <strong>applications for all programs under the international research talent initiative will be handled through KOLAB.</strong></p>
+      <p>On KOLAB you'll be able to <strong>apply for programs and also access settlement information, career-development content, and field-specific consulting — all the support services you need for research and life in Korea — in one place.</strong></p>
+      <p class="notice-closing">
+        <strong>Research and settlement in Korea, now easier and more convenient with KOLAB!</strong><br>
+        We look forward to your interest as KOLAB launches in early October.
+      </p>
+    </div>
+
+    <div class="card searchable-unit">
+      <h2>Programs at a Glance</h2>
+      <div class="overview-table">
+        <table>
+          <thead>
+            <tr><th scope="col">Category</th><th scope="col">Career Development</th><th scope="col">Life Support</th></tr>
+          </thead>
+          <tbody>
+            <tr class="row-mint">
+              <th scope="row">Graduate Students</th>
+              <td><ul>
+                <li>Career Exploration Course</li>
+                <li>Internship</li>
+                <li>R&amp;D Mock Research Project</li>
+                <li>Career Consulting</li>
+                <li>Hangeul-ring</li>
+              </ul></td>
+              <td rowspan="3" style="vertical-align:middle;">
+                <ul>
+                  <li>1:1 expert consulting (law, real estate, visas, tax, counseling)</li>
+                  <li>Life-Settlement Guidebook</li>
+                  <li>AI chatbot</li>
+                </ul>
+                <p style="margin:.8rem 0 0; font-size:1.25rem; color:var(--text-black-soft);">Available to both graduate students and working researchers</p>
+              </td>
+            </tr>
+            <tr class="row-peach">
+              <th scope="row">Working Researchers</th>
+              <td><ul>
+                <li>R&amp;D Capability Building</li>
+                <li>Networking</li>
+                <li>Results-Sharing Session</li>
+              </ul></td>
+            </tr>
+            <tr class="row-lavender">
+              <th scope="row">Common</th>
+              <td><ul>
+                <li>Career Development Guidebook</li>
+                <li>Multicultural Research Culture e-learning</li>
+                <li>Domestic Settlement Experience-Sharing Seminar</li>
+              </ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card searchable-unit">
+      <h2>Annual Schedule (Sep–Dec 2026)</h2>
+      <p style="font-size:1.3rem; color:var(--text-black-soft); margin-bottom:var(--sp-3);">※ Schedules may change depending on circumstances, so please check the latest notice before applying. (Click an item to go to that program's details.)</p>
+      <div class="calendar-grid" id="calendar-grid" role="list" aria-label="Program schedule, September to December 2026"></div>
+      <div class="calendar-groups" id="calendar-groups"></div>
+    </div>
+
+    <div class="card searchable-unit">
+      <h2>Contact &amp; Support</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>Program Team Contact</h3>
+          <p><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Operating Institution</h3>
+          <p>Korea Institute of Human Resources Development in Science and Technology (KIRD)</p>
+        </div>
+      </div>
+      <p style="margin-top:var(--sp-3); font-size:1.4rem; color:var(--text-black-soft);">
+        All programs are operated as part of the Ministry of Science and ICT's "Full-Cycle Settlement Support Program for Foreign S&amp;T Researchers," managed by the National Research Foundation of Korea (NRF) and carried out by the Korea Institute of Human Resources Development in Science and Technology (KIRD).
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>My Bookmarked Programs</h2>
+      <p class="bookmark-summary" id="bookmark-summary">You haven't bookmarked any programs yet. Tap "Save as favorite" on a program's detail view.</p>
+      <button class="reset-btn" id="bookmark-reset" type="button" hidden>Clear bookmarks</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. Graduate Student Programs
+       ============================================================ -->
+  <section class="panel" id="panel-grad" role="tabpanel" aria-labelledby="tab-btn-grad" tabindex="-1" hidden>
+    <div class="panel-head">
+      <span class="eyebrow">Graduate Student Programs</span>
+      <h1>From Career Exploration to Job-Search Prep in Korea</h1>
+      <p class="lead">We run a range of research and career-development programs to help foreign graduate students in master's and PhD programs in Korea balance research with career planning.</p>
+    </div>
+    <div class="pager-shell" id="pager-grad" data-cat="grad"></div>
+    <p class="no-result" data-cat="grad">No graduate student programs match your search. Try a different keyword.</p>
+  </section>
+
+  <!-- ============================================================
+       3. Working Researcher Programs
+       ============================================================ -->
+  <section class="panel" id="panel-staff" role="tabpanel" aria-labelledby="tab-btn-staff" tabindex="-1" hidden>
+    <div class="panel-head">
+      <span class="eyebrow">Working Researcher Programs</span>
+      <h1>Growing as a Researcher in Korea, and Settling In Securely</h1>
+      <p class="lead">We provide research and career-development programs, along with psychological support services, to help foreign working researchers — postdocs, faculty, and others — understand Korea's research environment and make the most of their research capabilities.</p>
+    </div>
+    <div class="pager-shell" id="pager-staff" data-cat="staff"></div>
+    <p class="no-result" data-cat="staff">No working researcher programs match your search. Try a different keyword.</p>
+  </section>
+
+  <!-- ============================================================
+       4. Life Support Services
+       ============================================================ -->
+  <section class="panel" id="panel-life" role="tabpanel" aria-labelledby="tab-btn-life" tabindex="-1" hidden>
+    <div class="panel-head">
+      <span class="eyebrow">Life Support Services</span>
+      <h1>From Visas to Daily Life to Emotional Wellbeing — Support Wherever You Need It</h1>
+      <p class="lead">We provide integrated support for the everyday challenges foreign science &amp; technology researchers face, to help them settle securely.</p>
+    </div>
+    <div class="pager-shell" id="pager-life" data-cat="life"></div>
+    <p class="no-result" data-cat="life">No life support services match your search. Try a different keyword.</p>
+  </section>
+
+  <!-- ============================================================
+       5. SNS & Other Support (incl. FAQ)
+       ============================================================ -->
+  <section class="panel" id="panel-sns" role="tabpanel" aria-labelledby="tab-btn-sns" tabindex="-1" hidden>
+    <div class="panel-head">
+      <span class="eyebrow">SNS &amp; Other Support</span>
+      <h1>Don't Miss Any Updates</h1>
+      <p class="lead">Follow our SNS channels to get application notices and the latest news as soon as they're posted.</p>
+    </div>
+
+    <div class="card searchable-unit">
+      <h2>SNS Channels</h2>
+      <div class="sns-grid">
+        <div class="sns-card searchable-unit">
+          <h3>Facebook</h3>
+          <p>Applications &amp; notices, content &amp; events</p>
+          <a class="pill-link" href="https://www.facebook.com/people/RD-Career-in-Korea-KIRD/61578111343121/?sk=directory_intro" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="sns-card searchable-unit">
+          <h3>LinkedIn</h3>
+          <p>Applications &amp; notices, content &amp; events</p>
+          <a class="pill-link" href="https://www.linkedin.com/in/rnd-career-in-korea-kird-59806137a" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="sns-card searchable-unit">
+          <h3>KakaoTalk Open Chat</h3>
+          <p>Life-in-Korea info, networking, applications &amp; notices</p>
+          <a class="pill-link" href="https://open.kakao.com/o/g8T8EGth" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="sns-card searchable-unit">
+          <h3>KIRD K-Club Global Lounge</h3>
+          <p>Discussion boards, content library</p>
+          <a class="pill-link" href="https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/list.do" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card searchable-unit">
+      <div class="faq-header">
+        <h2 style="margin:0;">Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-toggle-all">
+          <button type="button" id="faq-expand-all" class="faq-toggle-btn">Expand all</button>
+          <button type="button" id="faq-collapse-all" class="faq-toggle-btn">Collapse all</button>
+        </div>
+      </div>
+      <div id="faq-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h3>R&D Career in Korea</h3>
+      <p>Ministry of Science and ICT, "Full-Cycle Settlement Support Program for Foreign S&amp;T Researchers"<br>Managed by: National Research Foundation of Korea (NRF) · Operated by: KIRD</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
+    </div>
+    <div>
+      <h3>SNS</h3>
+      <p>
+        <a href="https://www.facebook.com/people/RD-Career-in-Korea-KIRD/61578111343121/?sk=directory_intro" target="_blank" rel="noopener">Facebook</a> ·
+        <a href="https://open.kakao.com/o/g8T8EGth" target="_blank" rel="noopener">KakaoTalk</a> ·
+        <a href="https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/list.do" target="_blank" rel="noopener">K-Club</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="fab-top" id="fab-top" aria-label="Back to top">TOP</button>
+
+<script>
+/* ============================================================
+   DATA  — 원문 매뉴얼 내용을 그대로 옮긴 구조화 데이터
+   (분리 시 data.js 로 이동 가능)
+   ============================================================ */
+const DATA = {
+  grad: [
+    {
+      tag:"Education", title:"Career Exploration Course", subtitle:"Korean job-market cases and prep know-how in one place",
+      desc:"Supports concrete career planning based on real domestic job-search cases and practical preparation know-how.",
+      catchphrases:[
+        {title:"Looking for direction on working in Korea", desc:"Ideal if you need a concrete direction for choosing a career path and preparing for employment in Korea."},
+        {title:"Curious about senior researchers' experience", desc:"Helpful if you want to learn from the real experience and prep know-how of researchers who already found jobs and settled in Korea."},
+        {title:"Want career, visa, and hiring information", desc:"Lets you check a wide range of career-development information at once and start your job search preparation."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Prep guidance from staff → Course delivery → Satisfaction survey",
+      footnote:"* The composition and schedule of future sessions may change.",
+      rows:[
+        ["Schedule","Oct 23, 2026: Cohort 5 (online) / Nov 5, 2026: Cohort 6 (offline, Seoul)"],
+        ["Eligibility","Foreign graduate students at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["How to apply","Announced on the program's SNS and KakaoTalk open chat when applications open"]
+      ],
+      links:[{label:"See program reviews", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007009Ts1pY8"}]
+    },
+    {
+      tag:"Consulting", title:"Career Consulting", subtitle:"Tailored support from career planning to interview prep",
+      desc:"Provides 1:1 support across the entire job-search process — strategy, application documents, and interview prep.",
+      catchphrases:[
+        {title:"Need a job-search strategy that fits you", desc:"Ideal for building a concrete job-search direction and preparation plan around your field of interest and career goals."},
+        {title:"Want your application documents reviewed", desc:"Useful when you want an expert to review your CV and cover letter and help you improve weak points."},
+        {title:"Need interview preparation", desc:"Ideal if you want 1:1 help ahead of an actual application — from interview prep through the whole hiring process."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Staff contact → Submit required documents → Online consulting session → Satisfaction survey",
+      rows:[
+        ["Schedule","Ongoing"],
+        ["Eligibility","Foreign graduate students, postdocs, graduates at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, and completers of this program's courses"],
+        ["How to apply","Individual application by email (globaltalent@kird.re.kr)"]
+      ], links:[{label:"Apply", url:"https://mail.google.com/mail/?view=cm&fs=1&to=globaltalent@kird.re.kr&su=%5B%EC%A7%84%EB%A1%9C%20%EC%BB%A8%EC%84%A4%ED%8C%85%5D%20%EC%8B%A0%EC%B2%AD"}]
+    },
+    {
+      tag:"Internship", title:"Internship", subtitle:"On-site experience and mentoring through 'K-STAR Internship'",
+      desc:"Supports hands-on experience and mentoring through internships at companies and research institutes.",
+      catchphrases:[
+        {title:"Need hands-on research experience", desc:"Ideal if you want to experience a real research environment and work at a domestic company or institute before job-hunting."},
+        {title:"Want to build practical skills", desc:"On-site practice and mentoring help you build the practical skills and work experience a researcher needs."},
+        {title:"Preparing for a job in Korea", desc:"Helpful for identifying your strengths through hands-on experience and preparing for future employment and career development."}
+      ],
+      process:"Recruitment → Employability training → Selection of top trainees → Interview with companies → Internship activity (2 months) → Completion",
+      footnote:"* The composition and schedule of the next cohort may change.",
+      rows:[
+        ["Schedule","2026 recruitment closed (next round expected in 2027)"],
+        ["Eligibility","Domestic science & engineering graduate-school graduates holding a K-STAR visa"]
+      ], links:[{label:"See program reviews", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007128Vq7cT8"}]
+    },
+    {
+      tag:"E-learning", title:"Multicultural Research Culture", subtitle:"Making Korean research culture easier to understand",
+      desc:"Supports learning about multicultural lab life and essential R&D Korean through case-based e-learning.",
+      catchphrases:[
+        {title:"Korean lab culture feels unfamiliar", desc:"Ideal for understanding lab life and research culture in Korea and adapting more smoothly to a new research environment."},
+        {title:"Struggling to communicate in the lab", desc:"Helps you learn frequently used expressions and R&D Korean so you can communicate more smoothly at work."},
+        {title:"Collaborating on a multicultural research team", desc:"Ideal for learning how to communicate and collaborate effectively with researchers from different cultural backgrounds."}
+      ],
+      rows:[
+        ["Release schedule","Planned for the second half of 2026"],
+        ["Eligibility","Domestic and international researchers in multicultural labs in Korea"]
+      ], links:[]
+    },
+    {
+      tag:"Team Project", title:"R&D Mock Research Project", subtitle:"Hands-on capability building through 'Global R&D Challenge'",
+      desc:"Domestic and international graduate students form teams to plan research and write proposals, building practical and collaboration skills through expert mentoring and workshops.",
+      catchphrases:[
+        {title:"Want to experience R&D project planning", desc:"Ideal if you need hands-on experience shaping a research idea and planning it like an actual national R&D project."},
+        {title:"Want to improve research-proposal writing", desc:"Expert mentoring and workshops let you write a research proposal yourself while building practical skills."},
+        {title:"Want to experience team research and collaboration", desc:"Ideal for building collaboration and research-planning skills while working on a project together with domestic and international researchers."}
+      ],
+      process:"Team recruitment → Selection → E-learning and in-person training → Topic setting and proposal-writing mentoring → Final evaluation → Results-sharing session",
+      footnote:"* The composition and schedule of the next round may change.",
+      rows:[
+        ["Schedule","2026 recruitment closed (next round expected in 2027)"],
+        ["Eligibility","Domestic and international science & engineering graduate/undergraduate students at Korean universities, and job-seekers within 2 years of graduation"]
+      ], links:[]
+    },
+    {
+      tag:"Content", title:"Career Development Guidebook", subtitle:"A guide to study, employment, and settlement in Korea",
+      desc:"Provides a guidebook covering stage-by-stage career concerns and settlement experiences and information at a glance.",
+      catchphrases:[
+        {title:"Curious about career paths in Korea", desc:"Helpful for learning what career paths are available after graduate school, through employment and settlement."},
+        {title:"Need information for your career stage", desc:"Ideal for systematically checking the career, employment, and settlement information relevant to your current stage."},
+        {title:"Want to learn from senior researchers' experience", desc:"Lets you reference the concerns and experiences of researchers who built a career in Korea to prepare your next step."}
+      ],
+      hideNote:true,
+      rows:[
+        ["Release schedule","Planned for the second half of 2026"]
+      ], links:[]
+    },
+    {
+      tag:"Content", title:"Hangeul-ring", subtitle:"Learning the Korean used every day in the lab",
+      desc:"Learn vocabulary and sentences centered on expressions frequently used in the lab, through a dedicated app.",
+      catchphrases:[
+        {title:"Need Korean for the lab", desc:"Ideal if you want to learn words and expressions actually used often in the research field, beyond general Korean."},
+        {title:"Want to communicate naturally in the lab", desc:"Helpful for communicating more smoothly with your advisor and fellow researchers in the lab."},
+        {title:"Want to self-study needed expressions", desc:"Ideal if you want to repeatedly study the lab Korean you need, at a time that suits you, using a dedicated app."}
+      ],
+      rows:[
+        ["Application period","Open year-round"],
+        ["Eligibility","Foreign graduate students, postdocs, graduates at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, and completers of this program's courses"],
+        ["How to use","Contact by email for access (globaltalent@kird.re.kr)"]
+      ], links:[{label:"Apply", url:"https://mail.google.com/mail/?view=cm&fs=1&to=globaltalent@kird.re.kr&su=%5B%ED%95%9C%EA%B8%80%EB%A7%81%5D%20%EC%8B%A0%EC%B2%AD"}]
+    }
+  ],
+  staff: [
+    {
+      tag:"Education", title:"R&D Capability Building", subtitle:"From Korean R&D policy to project planning and performance management",
+      desc:"Provides hands-on training in understanding Korean R&D, project planning, and project management.",
+      catchphrases:[
+        {title:"Want to properly understand Korea's R&D system", desc:"Ideal for systematically learning Korean R&D policy, institutions, and the overall project process."},
+        {title:"Want to build practical R&D project skills", desc:"Helpful for learning the practical know-how needed on the ground — from project planning to proposal writing, execution, and performance management."},
+        {title:"Want to grow your research career in Korea", desc:"Recommended for building your expertise and competitiveness as a researcher based on a solid understanding of Korea's research environment."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Prep guidance from staff → Course delivery → Satisfaction survey",
+      rows:[
+        ["Schedule","Nov 12, 2026 (Cohort 2 planned, offline, Seoul)"],
+        ["How to apply","Announced on the program's SNS and KakaoTalk open chat when applications open"]
+      ], links:[{label:"Check for new sessions", panel:"sns"}]
+    },
+    {
+      tag:"Social Learning", title:"Networking", subtitle:"Building research networks through 'R&D Career Salon'",
+      desc:"Supports exchange among researchers to expand opportunities for joint research and collaboration.",
+      catchphrases:[
+        {title:"Want new connections in your research field", desc:"Ideal for meeting a range of researchers around your field of interest and building a new network."},
+        {title:"Looking for a joint-research partner", desc:"Helpful for meeting researchers with similar interests and expanding possibilities for joint research and collaboration."},
+        {title:"Want to grow your research network in Korea", desc:"Recommended for continuing to connect with researchers at home and abroad beyond your own institution and broadening the base of your research activity."}
+      ],
+      process:"Leader selection & info session → Recruit group members → Preliminary workshop → Group activities → Review & case presentations → Results-sharing session",
+      footnote:"* The composition and schedule of the next round may change.",
+      rows:[
+        ["Schedule","2026 recruitment closed (next round expected in 2027)"],
+        ["Eligibility","Foreign researchers and graduate students seeking to grow their career and research network in Korea (up to 2 Korean nationals may also join)"]
+      ], links:[]
+    },
+    {
+      tag:"Sharing Session", title:"Results-Sharing Session", subtitle:"Sharing outstanding research achievements",
+      desc:"Shares practical know-how for settlement and career growth along with outstanding research achievements.",
+      catchphrases:[
+        {title:"Curious about other researchers' outstanding results", desc:"Ideal for gaining new research ideas and insight by reviewing achievements and case studies across various fields."},
+        {title:"Want to share your own research results", desc:"Helpful for sharing your own research experience and results with other researchers and creating meaningful exchange."},
+        {title:"Looking for new opportunities with fellow researchers", desc:"Recommended if you want to use results-sharing as a chance to connect with other researchers and broaden future collaboration and networking possibilities."}
+      ],
+      rows:[
+        ["Schedule","Planned for December 2026"],
+        ["Eligibility","Check with staff"]
+      ],
+      customNote:"The schedule and details will be shared at a later date.",
+      links:[]
+    },
+    {
+      tag:"Seminar", title:"Domestic Settlement Experience-Sharing Seminar", subtitle:"Sharing settlement and career-development information based on real experience",
+      desc:"Provides realistic advice and insight for research settlement by hearing directly from foreign researchers about their adaptation experience and know-how in Korea.",
+      catchphrases:[
+        {title:"Curious what research life in Korea is really like", desc:"Ideal for getting realistic information about the Korean research environment and daily life through the real experience of foreign researchers who've already settled here."},
+        {title:"Need job-search, career-change, or settlement know-how", desc:"Helpful for getting practical advice, based on real cases from senior researchers, on continuing your career in Korea."},
+        {title:"Want to map out a long-term career in Korea", desc:"Recommended for shaping your research career and future direction by referencing a range of settlement and career-development cases."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Preliminary staff guidance → Session delivery → Satisfaction survey",
+      rows:[
+        ["Schedule","Sep 30 (Wed), 2026, 18:00 / Oct 28 (Wed), 18:00 / Nov 25 (Wed), 18:00"],
+        ["How to apply","Announced on the program's SNS and KakaoTalk open chat when applications open"]
+      ], links:[{label:"Watch seminar videos", url:"https://youtu.be/T2ms3xCPH6c?si=dMF8ZCkeWYvpB3BZ"}]
+    }
+  ],
+  life: [
+    {
+      tag:"Consulting", title:"Individual/Group Life-Support Consulting", subtitle:"1:1 expert consulting on visas, law, real estate, and tax",
+      desc:"Solves problems through 1:1 or on-site group consulting with experts in visas, real estate, tax, and law.",
+      catchphrases:[
+        {title:"Dealing with visa, tax, or legal issues", desc:"Ideal if you want to consult a field expert about a professional issue arising during life and research in Korea."},
+        {title:"Want to resolve housing or daily-life issues", desc:"Useful when you want concrete guidance and help with settlement issues — like real estate — that are hard to handle alone."},
+        {title:"Need personalized expert advice", desc:"Helpful for finding a practical solution through 1:1 or on-site group consulting tailored to your situation."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Expert response provided (email) → Satisfaction survey",
+      rows:[
+        ["Schedule","Ongoing"],
+        ["Eligibility","Foreign graduate students and staff at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["How to apply","Submit an inquiry via the application link"]
+      ], links:[{label:"Apply", url:"https://moaform.com/q/FDXzrm"}]
+    },
+    {
+      tag:"Counseling", title:"Psychological Counseling", subtitle:"Support for adjusting to life in Korea and emotional stability",
+      desc:"Provides online psychological counseling (up to 5 sessions per person) with professional counselors who are available in English and understand the research field.",
+      catchphrases:[
+        {title:"Finding it hard to adjust to life in Korea", desc:"Ideal if you want to talk through the stress and difficulty of adapting to a new environment and culture with a professional counselor."},
+        {title:"Feeling emotional strain from research or daily life", desc:"Helpful if you're experiencing emotional difficulty from research life or relationships and need ongoing counseling and support."},
+        {title:"Want to talk comfortably in English", desc:"Useful if you want to share your concerns without a language barrier, with a counselor who understands the research field well."}
+      ],
+      process:"Check eligibility → Apply through the application desk → Book a preferred time → Preliminary assessment → Counseling sessions (up to 5) → Follow-up assessment & satisfaction survey",
+      rows:[
+        ["Schedule","Ongoing"],
+        ["Eligibility","Foreign science & engineering staff, graduate students, and their spouses settling in Korea (E-1, E-3, and other professional visas; F-series residence visas; D-series student visas — check details at application)"],
+        ["How to apply","Apply via the application link"]
+      ], links:[{label:"Apply", url:"https://moaform.com/q/02127L"}]
+    },
+    {
+      tag:"Content", title:"Life-Settlement Guidebook · AI Chatbot", subtitle:"Accurate, always-available life information",
+      desc:"Provides information tailored for new arrivals, families, and long-term residents, along with English-language local information (updated twice a year).",
+      catchphrases:[
+        {title:"Need information about life in Korea", desc:"Ideal for checking settlement information tailored to your situation at a glance, from your first arrival through long-term residence."},
+        {title:"Want life information in English", desc:"Helpful for easily checking housing, healthcare, and other information you need in Korea, in English."},
+        {title:"Want to find information instantly", desc:"Useful for looking up the life information you need anytime, anywhere, using the guidebook and AI chatbot."}
+      ],
+      rows:[],
+      hideNote:true,
+      links:[
+        {label:"View the guidebook", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000006231Pk7fY6"},
+        {label:"Subscribe to the AI chatbot", url:"http://pf.kakao.com/_IMxmtn"}
+      ]
+    },
+    {
+      tag:"Interpretation Support", title:"Local On-Site Support Buddy", subtitle:"Interpretation support for hospitals, banks, and other daily errands",
+      desc:"A Korean buddy accompanies you at hospitals, banks, and similar settings to provide everyday-level interpretation support. ※ Support may not be available in regions where no Korean buddy has been recruited.",
+      catchphrases:[
+        {title:"Still finding life in Korea unfamiliar", desc:"Ideal if you want on-site help with administrative tasks that are hard to handle alone, like at hospitals or banks."},
+        {title:"Need on-site interpretation and guidance", desc:"Helpful if language and procedures make certain everyday settings difficult, and you want a buddy's help to use them more easily."},
+        {title:"Need direct, local help", desc:"Useful for resolving daily-life issues, that online information alone can't solve, directly together with a local Korean buddy."}
+      ],
+      process:"Check eligibility → Apply through the application desk (describe your preferred time and support needs in detail) → Buddy matching notice → On-site support accompanied by a Korean buddy → Satisfaction survey",
+      rows:[
+        ["Schedule","Ongoing"],
+        ["Eligibility","Foreign graduate students and staff at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["How to apply","Apply for a buddy via the application link"]
+      ], links:[{label:"Apply", url:"https://moaform.com/q/FDXzrm"}]
+    }
+  ]
+};
+
+const FAQ_ITEMS = [
+  {q:"Who can take part in the programs?",
+   html:`These programs are aimed mainly at <strong>foreign graduate students and researchers in science & engineering fields who live in Korea</strong>, and depending on the program, <strong>foreign nationals affiliated with the 4 science & technology institutes and K-STAR visa-track selected universities</strong> may participate. Eligibility details vary by program, so please check each program's requirements.
+    <details class="faq-sub"><summary>The 4 science & technology institutes</summary><p>KAIST, GIST, DGIST, UNIST</p></details>
+    <details class="faq-sub"><summary>K-STAR visa-track selected universities (32 in total)</summary><p>KAIST, DGIST, UNIST, GIST, UST (University of Science & Technology), Kangwon National University, Kyungpook National University, Gyeongsang National University, Kyung Hee University, Korea University, Korea University Sejong Campus, Dong-A University, Pukyong National University, Pusan National University, Sogang University, Seoul National University, Sungkyunkwan University, Soonchunhyang University, Ajou University, Yonsei University, Yonsei University Mirae Campus, Inha University, Chonnam National University, Jeonbuk National University, Jeju National University, Chung-Ang University, Chungnam National University, Chungbuk National University, POSTECH, Korea Maritime & Ocean University, Hanyang University, Hanyang University ERICA Campus</p></details>`},
+  {q:"Who can take part in the programs?",
+   html:`These programs are aimed mainly at foreign graduate students and researchers in science & engineering fields who live in Korea. They range from career exploration and job-search prep to R&D capability building, networking, and life-settlement support, and <strong>eligibility details vary by program, so please check each program's requirements.</strong>`},
+  {q:"Where do I apply for a program?",
+   html:`<strong>Until KOLAB launches, please apply using the method announced in each program's recruitment notice.</strong> Information on new programs and recruitment is posted on the <strong>R&D Career in Korea SNS channels and the K-Club Global Lounge</strong>.<br><br><strong>After KOLAB launches in early October, you'll be able to check and apply for every program conveniently in one place on KOLAB.</strong>`},
+  {q:"Can I join multiple programs at the same time?",
+   html:`If you meet each program's eligibility requirements, you can take part in several programs. However, <strong>schedules, selection criteria, and whether overlapping participation is allowed can differ by program</strong>, so please check the details in each recruitment notice.`},
+  {q:"How do I know which program is right for me?",
+   html:`If you're preparing for a job in Korea, try <strong>Career Exploration, Career Consulting, or the Internship</strong>. To build research capability, try <strong>R&D Capability Building or the R&D Mock Research Project</strong>. If you need help with life and settlement in Korea, try <strong>Life-Support Consulting, Psychological Counseling, the Life-Settlement Guidebook</strong>, and similar programs.<br><br>Check the <strong>"who this is for" section and key details on each program page</strong> to easily find the program you need right now.`},
+  {q:"How many psychological counseling sessions can I receive?",
+   html:`<strong>You can receive up to 5 online counseling sessions per person.</strong> Counseling is available in English, provided by professional counselors who understand the research field well.`},
+  {q:"Is there a cost to take part in the programs?",
+   html:`<strong>All programs are provided free of charge.</strong> That said, to make limited spots available to as many people as possible, <strong>failing to show up without prior notice (a no-show) may limit your ability to join future programs.</strong><br><br>If you're unable to attend for unavoidable reasons, please be sure to <strong>cancel or reschedule in advance</strong> out of consideration for other participants.`}
+];
+
+/* 연간 일정 — 원문에 날짜가 명시된 항목만 정리 (cat/idx는 DATA 배열의 위치를 가리킴) */
+const CALENDAR_EVENTS = [
+  {month:9,  day:30, cat:"staff", idx:3, label:"Settlement Experience-Sharing Seminar (session 4)"},
+  {month:10, day:23, cat:"grad",  idx:0, label:"Career Exploration Course, cohort 5 (online)"},
+  {month:10, day:28, cat:"staff", idx:3, label:"Settlement Experience-Sharing Seminar (session 5)"},
+  {month:11, day:5,  cat:"grad",  idx:0, label:"Career Exploration Course, cohort 6 (offline, Seoul)"},
+  {month:11, day:12, cat:"staff", idx:0, label:"R&D Capability Building, cohort 2 (offline, Seoul)"},
+  {month:11, day:25, cat:"staff", idx:3, label:"Settlement Experience-Sharing Seminar (session 6)"},
+  {month:12, day:null, cat:"staff", idx:2, label:"Results-Sharing Session"}
+];
+/* Programs announced only by operating pattern, without a specific date, grouped here */
+const CALENDAR_GROUPS = [
+  {title:"Ongoing (apply anytime)", items:[
+    {cat:"grad", idx:1, label:"Career Consulting"},
+    {cat:"grad", idx:6, label:"Hangeul-ring"},
+    {cat:"life", idx:null, label:"Life Support Services"}
+  ]},
+  {title:"Planned for release in H2 2026", items:[
+    {cat:"grad", idx:3, label:"Multicultural Research Culture e-learning"},
+    {cat:"grad", idx:5, label:"Career Development Guidebook"}
+  ]},
+  {title:"Recruitment closed (next round expected in 2027)", items:[
+    {cat:"grad", idx:2, label:"Internship"},
+    {cat:"grad", idx:4, label:"R&D Mock Research Project"},
+    {cat:"staff", idx:1, label:"Networking"}
+  ]}
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const state = {
+  activePanel: "intro",
+  searchQuery: ""
+};
+
+const LS_KEYS = { bookmarks:"kird_manual_bookmarks_v1" };
+
+function loadJSON(key, fallback){
+  try{ const v = JSON.parse(localStorage.getItem(key)); return v || fallback; }catch(e){ return fallback; }
+}
+function saveJSON(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+let bookmarkState = loadJSON(LS_KEYS.bookmarks, {grad:[], staff:[], life:[]});
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeRegExp(str){ return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function highlight(text, query){
+  const esc = escapeHtml(text);
+  if(!query) return esc;
+  const re = new RegExp(escapeRegExp(escapeHtml(query)), 'ig');
+  return esc.replace(re, m => `<mark>${m}</mark>`);
+}
+/* 프로그램 태그(카테고리)별 포인트 컬러 — 카드마다 시각적 리듬을 주기 위한 매핑 */
+const ORB_COLORS = [
+  { c:"#00754A", t:"#d4e9e2" }, // mint(그린)
+  { c:"#b1560f", t:"#f5e2d0" }, // peach(브라운)
+  { c:"#6b4694", t:"#e9e0f0" }, // lavender(퍼플)
+  { c:"#1c5d8c", t:"#dce8f0" }, // sky(블루)
+  { c:"#a83e5c", t:"#f6e2e8" }  // rose(로즈)
+];
+// 카테고리+순번 기준으로 색을 순환 배정한다 — 같은 태그를 쓰는 프로그램이 이웃해 있어도
+// 서로 다른 색이 되도록 태그 문자열이 아닌 위치(인덱스)로 색을 정한다.
+function tagColor(cat, idx){
+  const offsets = { grad:0, staff:2, life:4 }; // 카테고리마다 시작점을 다르게 해 경계에서도 안 겹치게 함
+  const pos = (offsets[cat] || 0) + idx;
+  return ORB_COLORS[pos % ORB_COLORS.length];
+}
+
+function itemHaystack(item){
+  const catchText = (item.catchphrases||[]).flatMap(c=>[c.title,c.desc]);
+  return [item.tag, item.title, item.subtitle, item.desc, item.process||'', item.footnote||'',
+    ...(item.rows||[]).flat(), ...(item.links||[]).map(l=>l.label), ...catchText]
+    .join(' ').toLowerCase();
+}
+// 프로그램마다 존재하는 항목(대상/방법/일정)만으로 진행 절차를 구성한다.
+// 원문에 없는 세부 단계를 새로 만들지 않고, 이미 표에 있는 실제 값을 절차 흐름으로 재배열한다.
+/* 운영/신청/배포 일정 값에서 상태 배지를 뽑아낸다 (모집종료/모집예정/상시 등). 못 찾으면 null. */
+function parseScheduleBadges(text){
+  const badges = [];
+  const closed = text.match(/(\d{4})년?\s*모집\s*종료/);
+  const open = text.match(/(\d{4})년?\s*모집\s*예정/);
+  const half = text.match(/(\d{4})년?\s*하반기/);
+  if(closed) badges.push({type:'closed', text:`${closed[1]} 모집종료`});
+  if(open) badges.push({type:'open', text:`${open[1]} 모집 예정`});
+  if(!closed && !open && half) badges.push({type:'pending', text:`${half[1]} 하반기 예정`});
+  if(!badges.length && /상시/.test(text)) badges.push({type:'open', text:'상시 운영'});
+  if(!badges.length && /확인 필요/.test(text)) badges.push({type:'unknown', text:'담당자 확인 필요'});
+  return badges;
+}
+
+const ROW_ICON = {
+  '대상': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 20c.7-3.4 3-5.4 5.5-5.4s4.8 2 5.5 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 14.8c1.9.2 3.6 1.7 4.2 4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  '방법': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 3 3 10.5l7 2.7L21 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 13.2 9 21l3.5-4.8" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
+  '일정': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  '기본': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.5M12 8v.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>'
+};
+const BULB_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M10 21h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 3a6.5 6.5 0 0 0-3.6 11.9c.6.4 1.1 1.2 1.1 2.1h5c0-.9.4-1.7 1.1-2.1A6.5 6.5 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>';
+const PROCESS_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="4.5" cy="12" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="6" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="18" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="19.5" cy="12" r="2" stroke="currentColor" stroke-width="1.7"/><path d="M6.3 11.1 10 7.4M10 16.6 6.3 12.9M14 7.4l3.7 3.7M17.7 12.9 14 16.6" stroke="currentColor" stroke-width="1.5"/></svg>';
+function iconForRowKey(key){
+  if(key.includes('Eligibility')) return ROW_ICON['대상'];
+  if(key.includes('How to') || key.includes('apply') || key.includes('use')) return ROW_ICON['방법'];
+  if(key.includes('Schedule') || key.includes('schedule') || key.includes('period') || key.includes('Period')) return ROW_ICON['일정'];
+  return ROW_ICON['기본'];
+}
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
+const panelIds = ["intro","grad","staff","life","sns"];
+function switchPanel(name, {focus=true}={}){
+  state.activePanel = name;
+  panelIds.forEach(id=>{
+    const panel = document.getElementById('panel-'+id);
+    const tab = document.getElementById('tab-btn-'+id);
+    const isActive = id === name;
+    panel.hidden = !isActive;
+    tab.setAttribute('aria-selected', isActive ? 'true':'false');
+  });
+  if(focus){
+    const panel = document.getElementById('panel-'+name);
+    panel.focus({preventScroll:false});
+  }
+}
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchPanel(btn.dataset.panel));
+});
+// 탭 키보드 좌우 이동 지원
+const tabListEl = document.getElementById('tab-list');
+tabListEl.addEventListener('keydown', e=>{
+  if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+  const buttons = Array.from(tabListEl.querySelectorAll('.tab-btn'));
+  const idx = buttons.indexOf(document.activeElement);
+  if(idx===-1) return;
+  e.preventDefault();
+  const next = e.key==='ArrowRight' ? (idx+1)%buttons.length : (idx-1+buttons.length)%buttons.length;
+  buttons[next].focus();
+});
+document.getElementById('brand-home').addEventListener('click', e=>{ e.preventDefault(); switchPanel('intro'); });
+document.body.addEventListener('click', e=>{
+  const link = e.target.closest('[data-panel-link]');
+  if(!link) return;
+  e.preventDefault();
+  switchPanel(link.dataset.panelLink);
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+/* 모바일 메뉴 토글 (탭바 표시/숨김) */
+const menuToggle = document.getElementById('menu-toggle');
+const tabBarEl = document.getElementById('tab-bar');
+menuToggle.addEventListener('click', ()=>{
+  const open = tabBarEl.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', open ? 'true':'false');
+});
+
+/* ============================================================
+   BOOKMARKS
+   ============================================================ */
+function toggleBookmark(cat, idx){
+  const set = new Set(bookmarkState[cat]);
+  if(set.has(idx)) set.delete(idx); else set.add(idx);
+  bookmarkState[cat] = Array.from(set);
+  saveJSON(LS_KEYS.bookmarks, bookmarkState);
+  renderBookmarkSummary();
+}
+const bookmarkResetBtn = document.getElementById('bookmark-reset');
+let bookmarkResetPending = false;
+let bookmarkResetTimer = null;
+bookmarkResetBtn.addEventListener('click', ()=>{
+  if(!bookmarkResetPending){
+    bookmarkResetPending = true;
+    bookmarkResetBtn.textContent = 'Are you sure? Click once more to confirm';
+    bookmarkResetBtn.classList.add('confirming');
+    clearTimeout(bookmarkResetTimer);
+    bookmarkResetTimer = setTimeout(()=>{
+      bookmarkResetPending = false;
+      bookmarkResetBtn.textContent = 'Clear bookmarks';
+      bookmarkResetBtn.classList.remove('confirming');
+    }, 3000);
+    return;
+  }
+  clearTimeout(bookmarkResetTimer);
+  bookmarkResetPending = false;
+  bookmarkResetBtn.classList.remove('confirming');
+  bookmarkResetBtn.textContent = 'Clear bookmarks';
+  bookmarkState = {grad:[], staff:[], life:[]};
+  saveJSON(LS_KEYS.bookmarks, bookmarkState);
+  renderBookmarkSummary();
+  renderAllPagers();
+});
+function renderBookmarkSummary(){
+  const el = document.getElementById('bookmark-summary');
+  const resetBtn = document.getElementById('bookmark-reset');
+  const catLabel = {grad:'Graduate Student Program', staff:'Working Researcher Program', life:'Life Support Service'};
+  const entries = [];
+  ['grad','staff','life'].forEach(cat=>{
+    (bookmarkState[cat]||[]).forEach(idx=>{
+      const item = DATA[cat][idx];
+      if(item) entries.push(`${item.title} <span style="color:var(--text-black-soft)">· ${catLabel[cat]}</span>`);
+    });
+  });
+  resetBtn.hidden = entries.length===0;
+  if(entries.length===0){
+    el.textContent = "You haven't bookmarked any programs yet. Tap \"Save as favorite\" on a program's detail view.";
+  }else{
+    el.innerHTML = "⭐ " + entries.join(' &nbsp;·&nbsp; ');
+  }
+}
+
+/* ============================================================
+   프로그램 카드로 바로 이동 (캘린더 등에서 사용)
+   ============================================================ */
+function jumpToProgram(cat, idx){
+  switchPanel(cat);
+  if(idx===null || Number.isNaN(idx)) return;
+  requestAnimationFrame(()=>{
+    const card = document.querySelector(`.program-card[data-cat="${cat}"][data-idx="${idx}"]`);
+    if(!card) return;
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.classList.add('flash');
+    setTimeout(()=> card.classList.remove('flash'), 1600);
+  });
+}
+
+/* ============================================================
+   연간 일정 캘린더 뷰
+   ============================================================ */
+const MONTH_NAMES = ["Sep","Oct","Nov","Dec"];
+const CALENDAR_START_MONTH = 9;
+function renderCalendar(){
+  const grid = document.getElementById('calendar-grid');
+  const groupsWrap = document.getElementById('calendar-groups');
+
+  grid.innerHTML = MONTH_NAMES.map((name,i)=>{
+    const month = CALENDAR_START_MONTH + i;
+    const events = CALENDAR_EVENTS.filter(e=>e.month===month).sort((a,b)=>(a.day||99)-(b.day||99));
+    const eventsHtml = events.map(e=>`
+      <button class="calendar-event" data-jump-cat="${e.cat}" data-jump-idx="${e.idx}">
+        ${e.day ? `<span class="ev-day">${e.day}</span>` : ''}${escapeHtml(e.label)}
+      </button>`).join('');
+    return `<div class="calendar-cell ${events.length?'has-event':''}" role="listitem">
+      <span class="calendar-month">${name}</span>
+      ${eventsHtml}
+    </div>`;
+  }).join('');
+
+  groupsWrap.innerHTML = CALENDAR_GROUPS.map(g=>`
+    <div>
+      <p class="calendar-group-title">${escapeHtml(g.title)}</p>
+      <div class="calendar-chip-row">
+        ${g.items.map(it=>`<button class="calendar-chip" data-jump-cat="${it.cat}" data-jump-idx="${it.idx}">${escapeHtml(it.label)}</button>`).join('')}
+      </div>
+    </div>`).join('');
+
+  document.querySelectorAll('[data-jump-cat]').forEach(btn=>{
+    btn.addEventListener('click', ()=> jumpToProgram(btn.dataset.jumpCat, parseInt(btn.dataset.jumpIdx,10)));
+  });
+}
+
+/* ============================================================
+   LIST RENDERING (프로그램을 카드 단위로 전체 나열)
+   ============================================================ */
+function renderCard(cat, idx){
+  const item = DATA[cat][idx];
+  const q = state.searchQuery;
+  const isBookmarked = (bookmarkState[cat]||[]).includes(idx);
+  const tc = tagColor(cat, idx);
+
+  const rowsHtml = item.rows.map(([k,v])=>{
+    return `<div class="info-row">
+        <span class="info-icon">${iconForRowKey(k)}</span>
+        <span class="info-label">${highlight(k,q)}</span>
+        <span class="info-value">${highlight(v,q)}</span>
+      </div>`;
+  }).join('');
+
+  const processHtml = item.process ? `
+    <div class="info-row">
+      <span class="info-icon">${PROCESS_ICON}</span>
+      <span class="info-label">Process</span>
+      <span class="info-value">${highlight(item.process,q)}</span>
+    </div>` : '';
+
+  const linksHtml = item.links.length ? `<div class="link-row">${item.links.map(l=>
+    l.panel
+      ? `<a class="pill-link" href="#panel-${l.panel}" data-panel-link="${l.panel}">${highlight(l.label,q)} →</a>`
+      : `<a class="pill-link" href="${l.url}" target="_blank" rel="noopener">${highlight(l.label,q)} ↗</a>`
+  ).join('')}</div>` : '';
+  const noteHtml = item.customNote
+    ? `<span class="note-pill">ℹ️ ${highlight(item.customNote,q)}</span>`
+    : (!item.hideNote && /Check with staff/.test(itemHaystack(item)))
+      ? `<span class="note-pill">ℹ️ Some details are still pending confirmation with staff</span>` : '';
+  const footnoteHtml = item.footnote ? `<p class="process-footnote">${highlight(item.footnote,q)}</p>` : '';
+
+  const catchHtml = (item.catchphrases && item.catchphrases.length) ? `
+    <div class="catch-grid" aria-label="Who this is for">
+      ${item.catchphrases.map(c=>`
+        <div class="catch-box">
+          <p class="catch-title">${highlight(c.title,q)}</p>
+          <p class="catch-desc">${highlight(c.desc,q)}</p>
+        </div>`).join('')}
+    </div>` : '';
+
+  return `
+    <article class="program-card card" data-cat="${cat}" data-idx="${idx}" style="--tag-color:${tc.c}; --tag-tint:${tc.t};">
+      <div class="program-head">
+        <div>
+          <span class="tag-pill">${highlight(item.tag,q)}</span>
+          <h2>${highlight(item.title,q)}</h2>
+          <p class="program-subtitle">${highlight(item.subtitle,q)}</p>
+        </div>
+        <label class="bookmark-toggle ${isBookmarked?'is-on':''}">
+          <input type="checkbox" data-cat="${cat}" data-idx="${idx}" class="bookmark-input" ${isBookmarked?'checked':''}>
+          <span class="bookmark-check" aria-hidden="true">✓</span>
+          Save as favorite
+        </label>
+      </div>
+      <p>${highlight(item.desc,q)}</p>
+      ${catchHtml}
+      <div class="info-rows">
+        ${rowsHtml}
+        ${processHtml}
+      </div>
+      ${noteHtml}
+      ${linksHtml}
+      ${footnoteHtml}
+    </article>`;
+}
+
+function renderPager(cat){
+  const container = document.getElementById('pager-'+cat);
+  const items = DATA[cat];
+  const q = state.searchQuery;
+  const matches = items.map(item => !q || itemHaystack(item).includes(q));
+  const visibleCount = matches.filter(Boolean).length;
+
+  const countLabel = q
+    ? `${visibleCount} matching program(s)`
+    : `${items.length} program(s) total`;
+  const listHtml = `<p class="list-count" aria-live="polite">${countLabel}</p>` +
+    items.map((it,i)=> renderCard(cat,i)).join('');
+
+  container.innerHTML = listHtml;
+
+  // 검색어와 일치하지 않는 카드는 숨김, 그 외에는 모두 스크롤로 확인 가능하도록 표시
+  container.querySelectorAll('.program-card').forEach((el,i)=>{
+    el.classList.toggle('active', matches[i]);
+  });
+
+  // no-result 메시지
+  const noResultEl = document.querySelector(`.no-result[data-cat="${cat}"]`);
+  noResultEl.classList.toggle('show', q && visibleCount===0);
+
+  container.querySelectorAll('.bookmark-input').forEach(input=>{
+    input.addEventListener('change', ()=>{
+      toggleBookmark(input.dataset.cat, parseInt(input.dataset.idx,10));
+      input.closest('.bookmark-toggle').classList.toggle('is-on', input.checked);
+    });
+  });
+}
+
+function renderAllPagers(){ ['grad','staff','life'].forEach(renderPager); }
+
+/* ============================================================
+   FAQ (아코디언)
+   ============================================================ */
+function renderFaq(){
+  const wrap = document.getElementById('faq-list');
+  wrap.innerHTML = FAQ_ITEMS.map((f,i)=>`
+    <div class="faq-item searchable-unit">
+      <h3 style="margin:0;">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}" id="faq-q-${i}">
+          <span class="sf" data-original="${escapeHtml(f.q)}">${escapeHtml(f.q)}</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+      </h3>
+      <div class="faq-a" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}">
+        <div class="faq-a-inner">${f.html}</div>
+      </div>
+    </div>`).join('');
+  wrap.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const expanded = btn.getAttribute('aria-expanded')==='true';
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(!expanded));
+      answer.style.maxHeight = expanded ? '0px' : answer.scrollHeight + 'px';
+    });
+  });
+  // FAQ 답변 안에 중첩된 <details>(4대 과기원 / K-STAR 대학 목록)를 열고 닫을 때
+  // 부모 아코디언의 max-height도 함께 재계산한다 (안 그러면 내용이 잘려 보임).
+  wrap.querySelectorAll('.faq-sub').forEach(sub=>{
+    sub.addEventListener('toggle', ()=>{
+      const answer = sub.closest('.faq-a');
+      if(answer && answer.style.maxHeight && answer.style.maxHeight !== '0px'){
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+function setAllFaq(expand){
+  document.querySelectorAll('#faq-list .faq-q').forEach(btn=>{
+    const answer = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.setAttribute('aria-expanded', String(expand));
+    answer.style.maxHeight = expand ? answer.scrollHeight + 'px' : '0px';
+  });
+}
+document.getElementById('faq-expand-all').addEventListener('click', ()=> setAllFaq(true));
+document.getElementById('faq-collapse-all').addEventListener('click', ()=> setAllFaq(false));
+
+/* ============================================================
+   SEARCH — 전역 필터링 + 하이라이트
+   ============================================================ */
+const searchInput = document.getElementById('search-input');
+const searchClear = document.getElementById('search-clear');
+const searchStatus = document.getElementById('search-status');
+
+function updateStaticHighlight(query){
+  document.querySelectorAll('.sf').forEach(el=>{
+    const original = el.dataset.original;
+    el.innerHTML = highlight(original, query);
+  });
+}
+function updateStaticFilter(query){
+  document.querySelectorAll('.searchable-unit').forEach(unit=>{
+    if(!query){ unit.style.display=''; return; }
+    const text = unit.textContent.toLowerCase();
+    unit.style.display = text.includes(query) ? '' : 'none';
+  });
+}
+
+let searchDebounce;
+function runSearch(){
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(()=>{
+    const raw = searchInput.value.trim();
+    const query = raw.toLowerCase();
+    state.searchQuery = query;
+    searchClear.style.display = raw ? 'block' : 'none';
+    document.body.classList.toggle('search-active', !!query);
+
+    updateStaticHighlight(query);
+    updateStaticFilter(query);
+    renderAllPagers();
+
+    if(query){
+      let count = 0;
+      ['grad','staff','life'].forEach(cat=>{ count += DATA[cat].filter(it=>itemHaystack(it).includes(query)).length; });
+      document.querySelectorAll('.searchable-unit').forEach(u=>{ if(u.style.display!=='none') count++; });
+      searchStatus.innerHTML = `Showing ${count} result(s) for ‘<strong>${escapeHtml(raw)}</strong>’. (All sections are expanded.)`;
+      searchStatus.classList.add('show');
+    }else{
+      searchStatus.classList.remove('show');
+      searchStatus.textContent='';
+      switchPanel(state.activePanel, {focus:false});
+    }
+  }, 120);
+}
+searchInput.addEventListener('input', runSearch);
+searchInput.addEventListener('keydown', e=>{ if(e.key==='Escape'){ searchInput.value=''; runSearch(); }});
+searchClear.addEventListener('click', ()=>{ searchInput.value=''; runSearch(); searchInput.focus(); });
+
+/* ============================================================
+   ETC — 인쇄, 맨 위로
+   ============================================================ */
+document.getElementById('print-btn').addEventListener('click', ()=> window.print());
+const fabTop = document.getElementById('fab-top');
+window.addEventListener('scroll', ()=>{ fabTop.style.display = window.scrollY>400 ? 'flex':'none'; });
+fabTop.style.display='none';
+fabTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderFaq();
+renderCalendar();
+renderAllPagers();
+renderBookmarkSummary();
+
+/* ============================================================
+   사용 방법 요약 (기능 사용법)
+   ------------------------------------------------------------
+   1) 상단 검색창에 키워드(예: "인턴십", "심리상담", "비자")를 입력하면
+      전체 5개 섹션이 자동으로 펼쳐지고, 일치하지 않는 카드/행은 숨겨지며
+      일치하는 텍스트는 <mark>로 하이라이트됩니다. 검색어를 지우면
+      원래 탭 화면으로 돌아갑니다.
+   2) 상단 탭(사업 소개 / 대학원 프로그램 / 재직자 프로그램 /
+      생활지원서비스 / SNS·FAQ)을 클릭해 원하는 카테고리로 이동합니다.
+      탭에 포커스를 두고 좌우 화살표 키로도 이동할 수 있습니다.
+   3) 대학원/재직자/생활지원 섹션은 프로그램 카드가 모두 세로로 나열되어
+      있어 스크롤하며 확인할 수 있고, 프로그램마다 하나의 카드(단락)로
+      구분되어 있습니다. 각 카드에는 원문 정보(대상/방법/일정)를 바탕으로
+      한 "진행 절차" 흐름이 함께 표시됩니다.
+   3-1) "사업 소개" 탭의 "연간 일정" 캘린더에서 월별 확정 일정과
+      상시운영/하반기예정/2027년예정 프로그램을 확인할 수 있고,
+      항목을 클릭하면 해당 프로그램 카드로 바로 이동합니다.
+   4) 각 프로그램 카드의 "관심 프로그램으로 저장" 체크박스는 localStorage에
+      저장되어 브라우저를 새로고침해도 상태가 유지됩니다.
+   5) 헤더의 "인쇄 / PDF" 버튼을 누르면 브라우저 인쇄 대화상자가 열리고,
+      인쇄용 스타일이 적용되어 모든 프로그램 카드가 펼쳐진 상태로 출력됩니다.
+   6) 원문에 구체적인 값이 없는 항목은 "담당자 확인 필요" 또는
+      "추후 안내"로 표시되어 있으니, 정확한 사항은 담당 부서
+      (globaltalent@kird.re.kr)로 문의하시기 바랍니다.
+   ============================================================ */
+</script>
+</body>
+</html>

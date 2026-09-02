@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R&D Career in Korea | A Guide to the Full-Cycle Settlement Support Program for International Researchers</title>
-<meta name="description" content="A learning-style web manual for international science & technology researchers — from graduate students to working researchers — to search and check settlement support programs.">
+<meta name="description" content="A learning-style web manual for international science & technology researchers — from graduate students to incumbents — to search and check settlement support programs.">
 
 <!-- ============================================================
      이 파일은 index.html 단일 파일로 완성되어 있습니다.
@@ -404,7 +404,7 @@ body.search-active .tab-bar{ display:none; }
 .info-rows .info-row:first-child{ border-top:0; }
 .info-icon{ flex-shrink:0; width:2rem; height:2rem; color:var(--chrome-indigo); display:flex; align-items:center; justify-content:center; margin-top:.1rem; }
 .info-label{ flex:0 0 9rem; font-size:1.25rem; font-weight:700; color:var(--text-black-soft); }
-.info-value{ flex:1; font-size:1.45rem; color:var(--text-black); line-height:1.55; text-wrap:pretty; }
+.info-value{ flex:1; font-size:1.45rem; color:var(--text-black); line-height:1.55; text-wrap:pretty; white-space:pre-line; }
 .row-badges{ display:inline-flex; flex-wrap:wrap; gap:.6rem; }
 .row-badge{
   display:inline-block; font-size:1.2rem; font-weight:700; padding:.4rem 1.2rem; border-radius:var(--radius-pill);
@@ -418,6 +418,23 @@ body.search-active .tab-bar{ display:none; }
   .info-row{ flex-wrap:wrap; }
   .info-label{ flex-basis:100%; }
 }
+
+/* Process — shown as numbered step boxes instead of an arrow-separated run of text */
+/* Process — a colorless vertical timeline with a connecting line */
+.process-row .info-label{ margin-top:.2rem; }
+.process-steps{ position:relative; flex:1; display:flex; flex-direction:column; gap:1.3rem; }
+.process-steps::before{
+  content:""; position:absolute; left:1.09rem; top:.3rem; bottom:.3rem; width:1px; background:var(--border-soft);
+}
+.process-step{
+  position:relative; display:flex; align-items:flex-start; gap:1.2rem;
+}
+.process-step-num{
+  position:relative; z-index:1; flex-shrink:0; width:2.2rem; height:2.2rem; border-radius:50%;
+  background:#fff; border:2px solid var(--text-black-soft); color:var(--text-black);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.15rem;
+}
+.process-step-text{ font-size:1.4rem; color:var(--text-black); line-height:1.5; padding-top:.2rem; text-wrap:pretty; }
 
 .link-row{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:var(--sp-3); }
 .pill-link{
@@ -641,9 +658,9 @@ body.search-active .tab-bar{ display:none; }
   <ul class="tab-list" role="tablist" id="tab-list">
     <li><button class="tab-btn" role="tab" id="tab-btn-intro" aria-selected="true" aria-controls="panel-intro" data-panel="intro">1. Overview</button></li>
     <li><button class="tab-btn" role="tab" id="tab-btn-grad" aria-selected="false" aria-controls="panel-grad" data-panel="grad">2. Graduate Student Programs <span class="count">7</span></button></li>
-    <li><button class="tab-btn" role="tab" id="tab-btn-staff" aria-selected="false" aria-controls="panel-staff" data-panel="staff">3. Working Researcher Programs <span class="count">4</span></button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-staff" aria-selected="false" aria-controls="panel-staff" data-panel="staff">3. International Incumbents Programs <span class="count">4</span></button></li>
     <li><button class="tab-btn" role="tab" id="tab-btn-life" aria-selected="false" aria-controls="panel-life" data-panel="life">4. Life Support Services <span class="count">4</span></button></li>
-    <li><button class="tab-btn" role="tab" id="tab-btn-sns" aria-selected="false" aria-controls="panel-sns" data-panel="sns">5. SNS &amp; FAQ</button></li>
+    <li><button class="tab-btn" role="tab" id="tab-btn-sns" aria-selected="false" aria-controls="panel-sns" data-panel="sns">5. SNS &amp; Contact</button></li>
   </ul>
 </nav>
 
@@ -656,7 +673,7 @@ body.search-active .tab-bar{ display:none; }
     <div class="panel-head hero-head">
       <h1 class="hero-title">R&amp;D Career in <span class="kw">Korea</span></h1>
       <img class="hero-journey-img" src="images/career-journey.jpg" alt="R&D Career in Korea settlement journey map: an illustrated path from starting graduate school, adapting to academic and lab life, understanding Korea's R&D system, job-search preparation, career development, employment, through to successful settlement">
-      <p class="hero-tagline">When settling down becomes easier, your research shines brighter</p>
+      <p class="hero-tagline">When settling in becomes easier, research shines brighter.</p>
       <p class="hero-lead">We support international science &amp; technology researchers through the entire journey in Korea — from starting graduate school to employment, settlement, and career development.</p>
       <div class="hero-cta">
         <a class="hero-btn-filled" href="#panel-grad" data-panel-link="grad">Explore Programs</a>
@@ -698,15 +715,14 @@ body.search-active .tab-bar{ display:none; }
                   <li>Life-Settlement Guidebook</li>
                   <li>AI chatbot</li>
                 </ul>
-                <p style="margin:.8rem 0 0; font-size:1.25rem; color:var(--text-black-soft);">Available to both graduate students and working researchers</p>
+                <p style="margin:.8rem 0 0; font-size:1.25rem; color:var(--text-black-soft);">Available to both international graduate students and incumbents</p>
               </td>
             </tr>
             <tr class="row-peach">
-              <th scope="row">Working Researchers</th>
+              <th scope="row">Incumbents</th>
               <td><ul>
-                <li>R&amp;D Capability Building</li>
+                <li>R&amp;D Capacity-Building program</li>
                 <li>Networking</li>
-                <li>International Researcher Networking Day</li>
               </ul></td>
             </tr>
             <tr class="row-lavender">
@@ -715,6 +731,7 @@ body.search-active .tab-bar{ display:none; }
                 <li>Career Development Guidebook</li>
                 <li>Multicultural Research Culture e-learning</li>
                 <li>R&D Career Talk in Korea</li>
+                <li>International Researcher Networking Day</li>
               </ul></td>
             </tr>
           </tbody>
@@ -724,26 +741,20 @@ body.search-active .tab-bar{ display:none; }
 
     <div class="card searchable-unit">
       <h2>Annual Schedule (Sep–Dec 2026)</h2>
-      <p style="font-size:1.3rem; color:var(--text-black-soft); margin-bottom:var(--sp-3);">※ Schedules may change depending on circumstances, so please check the latest notice before applying. (Click an item to go to that program's details.)</p>
+      <p style="font-size:1.3rem; color:var(--text-black-soft); margin-bottom:var(--sp-3);">※ Schedules may change depending on circumstances, so please check the latest notice before applying. (Click each item to view the details of the corresponding program.)</p>
       <div class="calendar-grid" id="calendar-grid" role="list" aria-label="Program schedule, September to December 2026"></div>
       <div class="calendar-groups" id="calendar-groups"></div>
     </div>
 
     <div class="card searchable-unit">
-      <h2>Contact &amp; Support</h2>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <h3>Program Team Contact</h3>
-          <p><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
-        </div>
-        <div class="contact-item">
-          <h3>Implementing Institution</h3>
-          <p>Korea Institute of Human Resources Development in Science and Technology (KIRD)</p>
+      <div class="faq-header">
+        <h2 style="margin:0;">Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-toggle-all">
+          <button type="button" id="faq-expand-all" class="faq-toggle-btn">Expand all</button>
+          <button type="button" id="faq-collapse-all" class="faq-toggle-btn">Collapse all</button>
         </div>
       </div>
-      <p style="margin-top:var(--sp-3); font-size:1.4rem; color:var(--text-black-soft);">
-        All programs are operated as part of the Ministry of Science and ICT's "Full-Cycle Settlement Support Program for International Researchers," managed by the National Research Foundation of Korea (NRF) and carried out by the Korea Institute of Human Resources Development in Science and Technology (KIRD).
-      </p>
+      <div id="faq-list"></div>
     </div>
 
     <div class="card">
@@ -767,16 +778,16 @@ body.search-active .tab-bar{ display:none; }
   </section>
 
   <!-- ============================================================
-       3. Working Researcher Programs
+       3. International Incumbents Programs
        ============================================================ -->
   <section class="panel" id="panel-staff" role="tabpanel" aria-labelledby="tab-btn-staff" tabindex="-1" hidden>
     <div class="panel-head">
-      <span class="eyebrow">Working Researcher Programs</span>
-      <h1>Growing as a Researcher in Korea, and Settling In Securely</h1>
-      <p class="lead">We provide research and career-development programs, along with psychological support services, to help international working researchers — postdocs, faculty, and others — understand Korea's research environment and make the most of their research capabilities.</p>
+      <span class="eyebrow">International Incumbents Programs</span>
+      <h1>Growing as a Researcher in Korea, and Stable Adaptation</h1>
+      <p class="lead">We provide research and career-development programs, along with psychological support services, to help international incumbents — postdocs, faculty, and others — understand Korea's research environment and make the most of their research capabilities.</p>
     </div>
     <div class="pager-shell" id="pager-staff" data-cat="staff"></div>
-    <p class="no-result" data-cat="staff">No working researcher programs match your search. Try a different keyword.</p>
+    <p class="no-result" data-cat="staff">No incumbent programs match your search. Try a different keyword.</p>
   </section>
 
   <!-- ============================================================
@@ -785,8 +796,8 @@ body.search-active .tab-bar{ display:none; }
   <section class="panel" id="panel-life" role="tabpanel" aria-labelledby="tab-btn-life" tabindex="-1" hidden>
     <div class="panel-head">
       <span class="eyebrow">Life Support Services</span>
-      <h1>From Visas to Daily Life to Emotional Wellbeing — Support Wherever You Need It</h1>
-      <p class="lead">We provide integrated support for the everyday challenges international science &amp; technology researchers face, to help them settle securely.</p>
+      <h1>Standing By You Through Every Moment of Life in Korea</h1>
+      <p class="lead">We provide integrated support for the everyday challenges international STEM researchers face, to help them settle securely.</p>
     </div>
     <div class="pager-shell" id="pager-life" data-cat="life"></div>
     <p class="no-result" data-cat="life">No life support services match your search. Try a different keyword.</p>
@@ -829,14 +840,20 @@ body.search-active .tab-bar{ display:none; }
     </div>
 
     <div class="card searchable-unit">
-      <div class="faq-header">
-        <h2 style="margin:0;">Frequently Asked Questions (FAQ)</h2>
-        <div class="faq-toggle-all">
-          <button type="button" id="faq-expand-all" class="faq-toggle-btn">Expand all</button>
-          <button type="button" id="faq-collapse-all" class="faq-toggle-btn">Collapse all</button>
+      <h2>Contact &amp; Support</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>Program Coordinating Contact</h3>
+          <p><a href="mailto:globaltalent@kird.re.kr">globaltalent@kird.re.kr</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Implementing Institution</h3>
+          <p>Korea Institute of Human Resources Development in Science and Technology (KIRD)</p>
         </div>
       </div>
-      <div id="faq-list"></div>
+      <p style="margin-top:var(--sp-3); font-size:1.4rem; color:var(--text-black-soft);">
+        All programs are operated as part of the Ministry of Science and ICT's "Full-Cycle Settlement Support Program for International Researchers," managed by the National Research Foundation of Korea (NRF) and implemented by the Korea Institute of Human Resources Development in Science and Technology (KIRD).
+      </p>
     </div>
   </section>
 
@@ -886,15 +903,15 @@ const DATA = {
       tag:"Education", title:"Career Support Program", subtitle:"Korean job-market cases and prep know-how, all in one place",
       desc:"Supports concrete career planning based on real domestic job-search cases and practical preparation know-how.",
       catchphrases:[
-        {title:"Looking for direction on working in Korea", desc:"Ideal if you need clear direction for choosing a career path and preparing for employment in Korea."},
+        {title:"Looking for career path in Korea", desc:"Ideal if you need clear direction for choosing a career path and preparing for employment in Korea."},
         {title:"Curious about senior researchers' experience", desc:"Helpful if you want to learn from the real experiences and prep know-how of researchers who have already found jobs and settled in Korea."},
-        {title:"Want career, visa, and hiring information", desc:"Lets you check a wide range of career-development information in one place and start your job-search preparation."}
+        {title:"Want to know about career, visa, and hiring information", desc:"Lets you check a wide range of career-development information in one place and start your job-search preparation."}
       ],
-      process:"Check eligibility → Apply through the application desk → Prep guidance from staff → Course delivery → Satisfaction survey",
-      footnote:"* The composition and schedule of future sessions may change.",
+      process:"Check eligibility → Apply through the application link → Prep guidance from staff → Participate in the Course → Satisfaction survey",
+      footnote:"* The composition and schedule of future sessions may change. Starting in 2027, offline sessions will be open to students at universities nationwide.",
       rows:[
-        ["Schedule","Oct 23, 2026: Cohort 5 (online) / Nov 5, 2026: Cohort 6 (offline, Seoul)"],
-        ["Eligibility","International graduate students at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["Schedule","Oct 23, 2026: Session 5 (online) / Nov 5, 2026: Session 6 (offline, Seoul)"],
+        ["Eligibility","(Online) International STEM graduate students\n(Offline) International STEM graduate students at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
         ["How to apply","Announced on the program's social media channels and KakaoTalk open chat when applications open"]
       ],
       links:[
@@ -906,14 +923,14 @@ const DATA = {
       tag:"Consulting", title:"Career Consulting", subtitle:"Tailored support from career planning to interview prep",
       desc:"Provides one-on-one support across the entire job-search process — strategy, application documents, and interview prep.",
       catchphrases:[
-        {title:"Need a job-search strategy that fits you", desc:"Ideal for building a concrete job-search direction and preparation plan around your field of interest and career goals."},
+        {title:"Need a job-search strategy that fits you", desc:"Ideal for those who want to create a clear job-search strategy and a practical career preparation plan aligned with their interests and career goals."},
         {title:"Want your application documents reviewed", desc:"Useful when you want an expert to review your CV and cover letter and help you strengthen weak points."},
         {title:"Need interview preparation", desc:"Ideal if you want one-on-one help ahead of an actual application — covering interview prep and the hiring process as a whole."}
       ],
-      process:"Check eligibility → Apply through the application desk → Staff contact → Submit required documents → Online consulting session → Satisfaction survey",
+      process:"Check eligibility → Apply through the application link → Match with an expert → Submit required documents → Online consulting session → Satisfaction survey",
       rows:[
         ["Schedule","Ongoing"],
-        ["Eligibility","International graduate students, postdocs, and graduates of the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, as well as completers of this program's courses"],
+        ["Eligibility","International STEM graduate students, postdocs, and graduates of the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, as well as completers of this program courses"],
         ["How to apply","Individual application by email (globaltalent@kird.re.kr)"]
       ], links:[{label:"Apply", url:"https://mail.google.com/mail/?view=cm&fs=1&to=globaltalent@kird.re.kr&su=%5B%EC%A7%84%EB%A1%9C%20%EC%BB%A8%EC%84%A4%ED%8C%85%5D%20%EC%8B%A0%EC%B2%AD"}]
     },
@@ -925,24 +942,24 @@ const DATA = {
         {title:"Want to build practical skills", desc:"On-site practice and mentoring help you build the practical skills and work experience a researcher needs."},
         {title:"Preparing for a job in Korea", desc:"Helpful for identifying your strengths through hands-on experience while preparing for future employment and career development."}
       ],
-      process:"Recruitment → Employability training → Selection of top trainees → Interview with companies → Internship activity (3 months) → Completion",
-      footnote:"* The composition and schedule of the next cohort may change.",
+      process:"Recruitment → Employment skills training (about 50 selected) → Selection of top trainees (about 10 selected) → Interviews with companies (top trainees get priority interview access; other participants get document review and interview opportunities with participating companies afterward) → Internship activity (3 months) → Completion",
+      footnote:"* The composition and schedule of the next session may change.",
       rows:[
         ["Schedule","2026 recruitment closed (next round expected in 2027)"],
-        ["Eligibility","Domestic science & engineering graduate-school graduates holding a K-STAR visa"],
-        ["Program Scale","10 participants selected in total; mentoring stipend of KRW 300,000; labor cost support of KRW 2,600,000 (based on 2026 figures)"]
+        ["Eligibility","International STEM graduate students holding a K-STAR visa in Korea"],
+        ["Program Scale","10 participants selected in total; mentoring stipend of KRW 300,000; personnel expenses of KRW 2,600,000 (based on 2026 figures)"]
       ], links:[{label:"View Card News", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000007128Vq7cT8"}]
     },
     {
       tag:"E-learning", title:"Multicultural Research Culture", subtitle:"Making Korean research culture easier to understand",
       desc:"Supports learning about multicultural lab life and essential R&D Korean through case-based e-learning.",
       catchphrases:[
-        {title:"Korean lab culture feels unfamiliar", desc:"Ideal for understanding lab life and research culture in Korea, and adapting more smoothly to a new research environment."},
+        {title:"For those who are unfamiliar with research lab culture in Korea", desc:"Ideal for understanding lab life and research culture in Korea, and adapting more smoothly to a new research environment."},
         {title:"Struggling to communicate in the lab", desc:"Helps you learn frequently used expressions and R&D Korean so you can communicate more smoothly at work."},
         {title:"Collaborating on a multicultural research team", desc:"Ideal for learning how to communicate and collaborate effectively with researchers from different cultural backgrounds."}
       ],
       rows:[
-        ["Release schedule","Planned for the second half of 2026"],
+        ["Release schedule","Planned for release in the second half of the year"],
         ["Eligibility","Domestic and international researchers in multicultural labs in Korea"]
       ], links:[]
     },
@@ -954,12 +971,12 @@ const DATA = {
         {title:"Want to improve research-proposal writing", desc:"Expert mentoring and workshops let you write a research proposal yourself while building practical skills."},
         {title:"Want to experience team research and collaboration", desc:"Ideal for building collaboration and research-planning skills while working on a project together with domestic and international researchers."}
       ],
-      process:"Team recruitment → Selection → E-learning and in-person training → Topic setting and proposal-writing mentoring → Final evaluation → Results-sharing session",
+      process:"Team recruitment → Selection (about 8 teams) → E-learning and in-person training (July, August, September) → Mentoring on research topic development and research proposal writing (July, August, September) → Final evaluation (October) → Results-sharing session (December, with awards for top teams)",
       footnote:"* The composition and schedule of the next round may change.",
       rows:[
         ["Schedule","2026 recruitment closed (next round expected in 2027)"],
-        ["Eligibility","Domestic and international science & engineering graduate/undergraduate students at Korean universities, and job-seekers within 2 years of graduation"],
-        ["Support Details","8 research teams selected (4 team members + 1 advising professor each); KRW 10,500,000 per team (based on 2026 figures)"]
+        ["Eligibility","Domestic and international STEM graduate/undergraduate students at Korean universities, and job-seekers within 2 years of graduation"],
+        ["Support Details","8 research teams selected (4 team members + 1 advising professor each); KRW 10.5 million per team (based on 2026 figures)"]
       ], links:[
         {label:"Watch Video", url:"https://youtu.be/2tE9Y_oTPkc?si=M-vqktv5o1dPXguS"},
         {label:"View Selection Results", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000006855Lj9wT0"},
@@ -969,15 +986,15 @@ const DATA = {
     },
     {
       tag:"Content", title:"Career Development Guidebook", subtitle:"A guide to study, employment, and settlement in Korea",
-      desc:"Offers a guidebook that brings together career concerns and settlement experiences and information at every stage, in one place.",
+      desc:"Offers a guidebook that brings together career concerns and settlement experiences and information at every stage and at a glance.",
       catchphrases:[
         {title:"Curious about career paths in Korea", desc:"Helpful for learning what career paths are available after graduate school — through employment and settlement."},
-        {title:"Need information for your career stage", desc:"Ideal for systematically checking the career, employment, and settlement information relevant to where you are right now."},
+        {title:"Need information for your career stage", desc:"Ideal for those who want to systematically explore the career, employment, and settlement information most relevant to their current stage of career development."},
         {title:"Want to learn from senior researchers' experience", desc:"Lets you draw on the concerns and experiences of researchers who have built a career in Korea, to help prepare your own next step."}
       ],
       hideNote:true,
       rows:[
-        ["Release schedule","Planned for the second half of 2026"]
+        ["Release schedule","Planned for release in the second half of the year"]
       ], links:[]
     },
     {
@@ -990,23 +1007,23 @@ const DATA = {
       ],
       rows:[
         ["Application period","Open year-round"],
-        ["Eligibility","International graduate students, postdocs, and graduates of the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, as well as completers of this program's courses"],
+        ["Eligibility","International STEM graduate students, postdocs, and graduates of the 4 science & technology institutes, UST, and K-STAR visa-track selected universities, as well as completers of this program courses"],
         ["How to use","Contact by email for access (globaltalent@kird.re.kr)"]
       ], links:[{label:"Apply", url:"https://mail.google.com/mail/?view=cm&fs=1&to=globaltalent@kird.re.kr&su=%5B%ED%95%9C%EA%B8%80%EB%A7%81%5D%20%EC%8B%A0%EC%B2%AD"}]
     }
   ],
   staff: [
     {
-      tag:"Education", title:"R&D Capability Building", subtitle:"From Korean R&D policy to project planning and performance management",
+      tag:"Education", title:"R&D Capacity-Building program", subtitle:"From Korean R&D policy to project planning and performance management",
       desc:"Provides hands-on training in understanding Korea's R&D system, project planning, and project management.",
       catchphrases:[
         {title:"Want to properly understand Korea's R&D system", desc:"Ideal for systematically learning Korean R&D policy, institutions, and the overall project process."},
         {title:"Want to build practical R&D project skills", desc:"Helpful for learning the practical know-how needed on the ground — from project planning and proposal writing to execution and performance management."},
         {title:"Want to grow your research career in Korea", desc:"Recommended for building your expertise and competitiveness as a researcher on the foundation of a solid understanding of Korea's research environment."}
       ],
-      process:"Check eligibility → Apply through the application desk → Prep guidance from staff → Course delivery → Satisfaction survey",
+      process:"Check eligibility → Apply through the application link → Prep guidance from staff → Participate in the Course → Satisfaction survey",
       rows:[
-        ["Schedule","Nov 12, 2026 (Cohort 2 planned, offline, Seoul)"],
+        ["Schedule","Nov 12, 2026 (Session 2 scheduled, offline, Seoul)"],
         ["How to apply","Announced on the program's social media channels and KakaoTalk open chat when applications open"]
       ], links:[]
     },
@@ -1014,24 +1031,24 @@ const DATA = {
       tag:"Social Learning", title:"Networking", subtitle:"Building research networks through the 'R&D Career Salon'",
       desc:"Supports exchange among researchers to expand opportunities for joint research and collaboration.",
       catchphrases:[
-        {title:"Want new connections in your research field", desc:"Ideal for meeting a range of researchers around your field of interest and building a new network."},
+        {title:"Want to expand professional network in your research field", desc:"Ideal for meeting a range of researchers around your field of interest and building a new network."},
         {title:"Looking for a joint-research partner", desc:"Helpful for meeting researchers with similar interests and expanding possibilities for joint research and collaboration."},
-        {title:"Want to grow your research network in Korea", desc:"Recommended for connecting with researchers at home and abroad beyond your own institution, and broadening the base of your research activity."}
+        {title:"Want to grow your research network in Korea", desc:"Recommended for expanding your research network by maintaining ongoing connections with researchers in Korea and abroad, beyond your own institution."}
       ],
       process:"Leader selection & info session → Recruit group members → Preliminary workshop → Group activities → Review & case presentations → Results-sharing session",
       footnote:"* The composition and schedule of the next round may change.",
       rows:[
         ["Schedule","2026 recruitment closed (next round expected in 2027)"],
-        ["Eligibility","International researchers and graduate students looking to grow their career and research network in Korea (up to 2 Korean nationals may also join)"]
+        ["Eligibility","International researchers and graduate students looking to grow their career and expand research network in Korea (up to 2 Korean nationals may also join)"]
       ], links:[]
     },
     {
-      tag:"Sharing Session", title:"International Researcher Networking Day", subtitle:"Sharing outstanding research achievements",
-      desc:"Shares practical know-how for settlement and career growth, alongside outstanding research achievements.",
+      tag:"Sharing Session", title:"International Researcher Networking Day", subtitle:"Sharing outstanding achievements and expanding networking",
+      desc:"Shares research outcomes from programs run independently by related institutions — spanning everything from attracting outstanding overseas science & technology talent to supporting settlement in Korea — and expands networking among participating researchers, related institutions, and policymakers.",
       catchphrases:[
         {title:"Curious about other researchers' outstanding results", desc:"Ideal for gaining new research ideas and insight by reviewing achievements and case studies across various fields."},
         {title:"Want to share your own research results", desc:"Helpful for sharing your own research experience and results with other researchers, and creating meaningful exchange."},
-        {title:"Looking for new opportunities with fellow researchers", desc:"Recommended if you want to use the results-sharing session as a chance to connect with other researchers and broaden future collaboration and networking possibilities."}
+        {title:"Want to network with related institutions and policymakers", desc:"Recommended if you want to connect not only with participating researchers but also with related institutions and policymakers, broadening future collaboration and networking possibilities."}
       ],
       rows:[
         ["Schedule","Thursday, December 17, 2026"],
@@ -1047,7 +1064,7 @@ const DATA = {
         {title:"Need job-search, career-change, or settlement know-how", desc:"Helpful for getting practical advice, based on real cases from senior researchers, on continuing your career in Korea."},
         {title:"Want to map out a long-term career in Korea", desc:"Recommended for shaping your research career and future direction by drawing on a range of settlement and career-development cases."}
       ],
-      process:"Check eligibility → Apply through the application desk → Preliminary staff guidance → Session delivery → Satisfaction survey",
+      process:"Check eligibility → Apply through the application link → Preliminary staff guidance → Take the seminar → Satisfaction survey",
       rows:[
         ["Schedule","Sep 30 (Wed), 2026, 18:00 / Oct 28 (Wed), 18:00 / Nov 25 (Wed), 18:00"],
         ["How to apply","Announced on the program's social media channels and KakaoTalk open chat when applications open"]
@@ -1067,10 +1084,10 @@ const DATA = {
         {title:"Want to resolve housing or daily-life issues", desc:"Useful when you want concrete guidance and help with settlement issues — like real estate — that are hard to handle alone."},
         {title:"Need personalized expert advice", desc:"Helpful for finding a practical solution through one-on-one or on-site group consulting tailored to your situation."}
       ],
-      process:"Check eligibility → Apply through the application desk → Expert response provided (email) → Satisfaction survey",
+      process:"Check eligibility → Apply through the application link → Expert response provided (email) → Satisfaction survey",
       rows:[
         ["Schedule","Ongoing"],
-        ["Eligibility","International graduate students and staff at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["Eligibility","International science & technology research personnel (both graduate students and staff)"],
         ["How to apply","Submit an inquiry via the application link"]
       ], links:[{label:"Apply", url:"https://moaform.com/q/FDXzrm"}]
     },
@@ -1078,19 +1095,36 @@ const DATA = {
       tag:"Counseling", title:"Psychological Counseling", subtitle:"Support for adjusting to life in Korea and emotional stability",
       desc:"Provides online psychological counseling (up to 5 sessions per person) with professional counselors who are available in English and understand the research field.",
       catchphrases:[
-        {title:"Finding it hard to adjust to life in Korea", desc:"Ideal if you want to talk through the stress and difficulty of adapting to a new environment and culture with a professional counselor."},
+        {title:"For those who are having difficulty adjusting to life in Korea", desc:"Ideal if you want to talk through the stress and difficulty of adapting to a new environment and culture with a professional counselor."},
         {title:"Feeling emotional strain from research or daily life", desc:"Helpful if you're experiencing emotional difficulty from research life or relationships and need ongoing counseling and support."},
         {title:"Want to talk comfortably in English", desc:"Useful if you want to share your concerns without a language barrier, with a counselor who understands the research field well."}
       ],
-      process:"Check eligibility → Apply through the application desk → Book a preferred time → Preliminary assessment → Counseling sessions (up to 5) → Follow-up assessment & satisfaction survey",
+      process:"Check eligibility → Apply through the application link → Book a preferred time → Preliminary assessment → Counseling sessions (up to 5) → Follow-up assessment & satisfaction survey",
       rows:[
         ["Schedule","Ongoing"],
-        ["Eligibility","International science & engineering staff, graduate students, and their spouses settling in Korea (E-1, E-3, and other professional visas; F-series residence visas; D-series student visas — check details at application)"],
+        ["Eligibility","International STEM staff, graduate students, and their spouses settling in Korea (E-1, E-3, and other professional visas; F-series residence visas; D-series student visas — check details at application)"],
         ["How to apply","Apply via the application link"]
       ], links:[{label:"Apply", url:"https://moaform.com/q/02127L"}]
     },
     {
-      tag:"Content", title:"Life-Settlement Guidebook · AI Chatbot", subtitle:"Accurate, always-available life information",
+      tag:"Interpretation Support", title:"Local On-Site Support Buddy", subtitle:"Interpretation support for hospitals, banks, and other daily errands",
+      desc:"A local Korean buddy will accompany you to places such as hospitals and banks, providing basic interpretation support for everyday situations.",
+      catchphrases:[
+        {title:"For those who are still unfamiliar with life in Korea", desc:"Ideal if you want on-site help with administrative tasks that are hard to handle alone, such as at hospitals or banks."},
+        {title:"Need on-site interpretation and guidance", desc:"Helpful if language and procedures make certain everyday settings difficult, and you'd like a buddy's help to navigate them more easily."},
+        {title:"Need direct, local help", desc:"Useful for resolving daily-life issues that online information alone can't solve, working directly alongside a local Korean buddy."}
+      ],
+      process:"Check eligibility → Apply through the application link (describe your preferred time and support needs in detail) → Buddy matching notice → On-site support accompanied by a Korean buddy → Satisfaction survey",
+      reference:"Accompanies you for hospital, bank, and other administrative errands, providing everyday-level interpretation support (does not cover sensitive matters such as medical consultations or contract interpretation).",
+      footnote:"※ Support may not be available in regions where no Korean buddy has been recruited.",
+      rows:[
+        ["Schedule","Ongoing"],
+        ["Eligibility","International STEM staff and graduate students at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
+        ["How to apply","Apply for a buddy via the application link"]
+      ], links:[{label:"Apply", url:"https://moaform.com/q/FDXzrm"}]
+    },
+    {
+      tag:"Content", title:"Life-Settlement Guidebook · AI Chatbot", subtitle:"Reliable, up-to-date information for daily life in Korea, available anytime",
       desc:"Provides information tailored for new arrivals, families, and long-term residents, along with English-language local information (updated twice a year).",
       catchphrases:[
         {title:"Need information about life in Korea", desc:"Ideal for checking settlement information tailored to your situation at a glance, from your first arrival through long-term residence."},
@@ -1103,49 +1137,34 @@ const DATA = {
         {label:"View the Guidebook", url:"https://k-club.kird.re.kr/bbs/BBSMSTR_000000000784/view.do?nttId=B000000006231Pk7fY6"},
         {label:"Subscribe to the AI Chatbot", url:"http://pf.kakao.com/_IMxmtn"}
       ]
-    },
-    {
-      tag:"Interpretation Support", title:"Local On-Site Support Buddy", subtitle:"Interpretation support for hospitals, banks, and other daily errands",
-      desc:"A Korean buddy accompanies you at hospitals, banks, and similar settings to provide everyday-level interpretation support. ※ Support may not be available in regions where no Korean buddy has been recruited.",
-      catchphrases:[
-        {title:"Still finding life in Korea unfamiliar", desc:"Ideal if you want on-site help with administrative tasks that are hard to handle alone, like at hospitals or banks."},
-        {title:"Need on-site interpretation and guidance", desc:"Helpful if language and procedures make certain everyday settings difficult, and you'd like a buddy's help to navigate them more easily."},
-        {title:"Need direct, local help", desc:"Useful for resolving daily-life issues that online information alone can't solve, working directly alongside a local Korean buddy."}
-      ],
-      process:"Check eligibility → Apply through the application desk (describe your preferred time and support needs in detail) → Buddy matching notice → On-site support accompanied by a Korean buddy → Satisfaction survey",
-      rows:[
-        ["Schedule","Ongoing"],
-        ["Eligibility","International graduate students and staff at the 4 science & technology institutes, UST, and K-STAR visa-track selected universities"],
-        ["How to apply","Apply for a buddy via the application link"]
-      ], links:[{label:"Apply", url:"https://moaform.com/q/FDXzrm"}]
     }
   ]
 };
 
 const FAQ_ITEMS = [
   {q:"Who can take part in the programs?",
-   html:`These programs are aimed mainly at <strong>international graduate students and researchers in science & engineering fields living in Korea</strong>. Depending on the program, <strong>international nationals affiliated with the 4 science & technology institutes and K-STAR visa-track selected universities</strong> may also take part. Eligibility varies by program, so please check each program's requirements.
+   html:`These programs are aimed mainly at <strong>STEM international graduate students and researchers living in Korea</strong>. Depending on the program, <strong>international nationals affiliated with government-funded research institutes and research institutes nationwide, the 4 science & technology institutes, and K-STAR visa-track selected universities</strong> may also take part. Eligibility varies by program, so please check each program's requirements.
     <details class="faq-sub"><summary>The 4 science & technology institutes</summary><p>KAIST, GIST, DGIST, UNIST</p></details>
     <details class="faq-sub"><summary>K-STAR visa-track selected universities (32 in total)</summary><p>KAIST, DGIST, UNIST, GIST, UST (University of Science & Technology), Kangwon National University, Kyungpook National University, Gyeongsang National University, Kyung Hee University, Korea University, Korea University Sejong Campus, Dong-A University, Pukyong National University, Pusan National University, Sogang University, Seoul National University, Sungkyunkwan University, Soonchunhyang University, Ajou University, Yonsei University, Yonsei University Mirae Campus, Inha University, Chonnam National University, Jeonbuk National University, Jeju National University, Chung-Ang University, Chungnam National University, Chungbuk National University, POSTECH, Korea Maritime & Ocean University, Hanyang University, Hanyang University ERICA Campus</p></details>`},
   {q:"Where do I apply for a program?",
    html:`<strong>Until KOLAB launches, please apply using the method announced in each program's recruitment notice.</strong> Information on new programs and recruitment is posted on the <strong>R&D Career in Korea social media channels and the K-Club Global Lounge</strong>.<br><br><strong>After KOLAB launches in early October, you'll be able to check and apply for every program conveniently in one place on KOLAB.</strong>`},
   {q:"Can I join multiple programs at the same time?",
-   html:`If you meet each program's eligibility requirements, you can take part in several programs at once. That said, <strong>schedules, selection criteria, and whether overlapping participation is allowed can differ by program</strong>, so please check the details in each recruitment notice.`},
+   html:`If you meet each program's eligibility requirements, you can take part in several programs at once. However, <strong>schedules, selection criteria, and eligibility for multiple program participation may vary by program</strong>, so please check the details in the relevant program announcement.`},
   {q:"How do I know which program is right for me?",
-   html:`If you're preparing for a job in Korea, try <strong>Career Support Program, Career Consulting, or the Internship</strong>. To build research capability, try <strong>R&D Capability Building or the R&D Mock Research Project</strong>. If you need help with life and settlement in Korea, try <strong>Life-Support Consulting, Psychological Counseling, the Life-Settlement Guidebook</strong>, and similar programs.<br><br>Check the <strong>"Who This Is For" section and key details on each program page</strong> to easily find the program that's right for you.`},
+   html:`If you're preparing for a job in Korea, try <strong>Career Support Program, Career Consulting, or the Internship</strong>. To build research capability, try <strong>R&D Capacity-Building program or the R&D Mock Research Project</strong>. If you need help with life and settlement in Korea, try <strong>Life-Support Consulting, Psychological Counseling, the Life-Settlement Guidebook</strong>, and similar programs.<br><br>You can easily find the program that best suits your needs by checking the <strong>recommended participants and key information on each program page</strong>.`},
   {q:"How many psychological counseling sessions can I receive?",
    html:`<strong>You can receive up to 5 online counseling sessions per person.</strong> Counseling is available in English, provided by professional counselors who understand the research field well.`},
-  {q:"Is there a cost to take part in the programs?",
-   html:`<strong>All programs are provided free of charge.</strong> That said, to make limited spots available to as many people as possible, <strong>failing to show up without prior notice (a no-show) may limit your ability to join future programs.</strong><br><br>If you're unable to attend for unavoidable reasons, please be sure to <strong>cancel or reschedule in advance</strong> out of consideration for other participants.`}
+  {q:"Is there a participation fee for the program?",
+   html:`<strong>All programs are provided free of charge.</strong> However, to ensure that limited participation opportunities are available to as many people as possible, <strong>those who fail to attend without prior notice (a no-show) may be subject to restrictions on participating in future programs.</strong><br><br>If you are unable to attend due to unavoidable circumstances, please <strong>cancel or reschedule your participation in advance</strong> so that the opportunity can be offered to another participant.`}
 ];
 
 /* 연간 일정 — 원문에 날짜가 명시된 항목만 정리 (cat/idx는 DATA 배열의 위치를 가리킴) */
 const CALENDAR_EVENTS = [
   {month:9,  day:30, cat:"staff", idx:3, label:"R&D Career Talk in Korea (session 4)"},
-  {month:10, day:23, cat:"grad",  idx:0, label:"Career Support Program, cohort 5 (online)"},
+  {month:10, day:23, cat:"grad",  idx:0, label:"Career Support Program (Session 5, Online)"},
   {month:10, day:28, cat:"staff", idx:3, label:"R&D Career Talk in Korea (session 5)"},
-  {month:11, day:5,  cat:"grad",  idx:0, label:"Career Support Program, cohort 6 (offline, Seoul)"},
-  {month:11, day:12, cat:"staff", idx:0, label:"R&D Capability Building, cohort 2 (offline, Seoul)"},
+  {month:11, day:5,  cat:"grad",  idx:0, label:"Career Support Program (Session 6, Offline, Seoul)"},
+  {month:11, day:12, cat:"staff", idx:0, label:"R&D Capacity-Building program (Session 2, Offline, Seoul)"},
   {month:11, day:25, cat:"staff", idx:3, label:"R&D Career Talk in Korea (session 6)"},
   {month:12, day:17, cat:"staff", idx:2, label:"International Researcher Networking Day"}
 ];
@@ -1156,7 +1175,7 @@ const CALENDAR_GROUPS = [
     {cat:"grad", idx:6, label:"Hangling(한글링)"},
     {cat:"life", idx:null, label:"Life Support Services"}
   ]},
-  {title:"Planned for release in H2 2026", items:[
+  {title:"Planned for release in the second half of the year", items:[
     {cat:"grad", idx:3, label:"Multicultural Research Culture e-learning"},
     {cat:"grad", idx:5, label:"Career Development Guidebook"}
   ]},
@@ -1263,9 +1282,10 @@ function switchPanel(name, {focus=true}={}){
     panel.hidden = !isActive;
     tab.setAttribute('aria-selected', isActive ? 'true':'false');
   });
+  window.scrollTo({top:0, behavior:'auto'});
   if(focus){
     const panel = document.getElementById('panel-'+name);
-    panel.focus({preventScroll:false});
+    panel.focus({preventScroll:true});
   }
 }
 document.querySelectorAll('.tab-btn').forEach(btn=>{
@@ -1337,7 +1357,7 @@ bookmarkResetBtn.addEventListener('click', ()=>{
 function renderBookmarkSummary(){
   const el = document.getElementById('bookmark-summary');
   const resetBtn = document.getElementById('bookmark-reset');
-  const catLabel = {grad:'Graduate Student Program', staff:'Working Researcher Program', life:'Life Support Service'};
+  const catLabel = {grad:'Graduate Student Program', staff:'International Incumbents Program', life:'Life Support Service'};
   const entries = [];
   ['grad','staff','life'].forEach(cat=>{
     (bookmarkState[cat]||[]).forEach(idx=>{
@@ -1420,11 +1440,25 @@ function renderCard(cat, idx){
       </div>`;
   }).join('');
 
-  const processHtml = item.process ? `
-    <div class="info-row">
+  const processSteps = item.process ? item.process.split('→').map(s=>s.trim()).filter(Boolean) : [];
+  const processHtml = processSteps.length ? `
+    <div class="info-row process-row">
       <span class="info-icon">${PROCESS_ICON}</span>
       <span class="info-label">Process</span>
-      <span class="info-value">${highlight(item.process,q)}</span>
+      <div class="process-steps">
+        ${processSteps.map((s,i)=>`
+          <div class="process-step">
+            <span class="process-step-num">${i+1}</span>
+            <span class="process-step-text">${highlight(s,q)}</span>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const referenceHtml = item.reference ? `
+    <div class="info-row">
+      <span class="info-icon">${ROW_ICON['기본']}</span>
+      <span class="info-label">Note</span>
+      <span class="info-value">${highlight(item.reference,q)}</span>
     </div>` : '';
 
   const linksHtml = item.links.length ? `<div class="link-row">${item.links.map(l=>
@@ -1466,6 +1500,7 @@ function renderCard(cat, idx){
       <div class="info-rows">
         ${rowsHtml}
         ${processHtml}
+        ${referenceHtml}
       </div>
       ${noteHtml}
       ${linksHtml}
